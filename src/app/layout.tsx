@@ -1,6 +1,6 @@
-import Container from '@/components/Layout/Container';
-import Footer from '@/components/Layout/Footer';
-import Header from '@/components/Layout/Header';
+import Container from '@/components/layout/BasicContainer';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -21,9 +21,7 @@ export default function RootLayout({
           <Header />
 
           <main className="flex-1 w-full">
-            <Container>
-              {children}
-            </Container>
+            {children}
           </main>
 
           <Footer />
