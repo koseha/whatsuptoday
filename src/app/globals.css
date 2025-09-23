@@ -121,3 +121,50 @@ body {
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+
+/* Upload area styles */
+.upload-area {
+  background-color: hsl(var(--surface));
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.05);
+  border: 1px solid hsl(var(--border));
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px dashed hsl(var(--muted));
+}
+
+.upload-area:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 4px 12px hsl(var(--primary) / 0.15);
+}
+
+.upload-area.active {
+  border-color: hsl(var(--primary));
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--secondary) / 0.05));
+  box-shadow: 0 2px 8px hsl(var(--primary) / 0.15);
+}
+
+/* Button styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}

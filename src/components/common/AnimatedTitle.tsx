@@ -18,7 +18,7 @@ export default function AnimatedTitle() {
     }, 3000); // 3초마다 변경
 
     return () => clearInterval(interval);
-  }, []);
+  }, [titles.length]);
 
   return (
     <div className="h-12 flex items-center justify-center mb-2">
