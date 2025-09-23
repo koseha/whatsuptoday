@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* WhatsUpToday Design System - Korean Mood Snapshot App */
+
+@layer base {
+  :root {
+    /* App Background & Surface Colors */
+    --background: 0 0% 96.1%;
+    /* #F5F5F5 */
+    --foreground: 210 11% 12.2%;
+    /* #111827 */
+    --surface: 0 0% 100%;
+    /* Pure white for cards */
+    --surface-elevated: 0 0% 98%;
+
+    /* Brand Colors */
+    --primary: 245 70% 59%;
+    /* #4F46E5 - Purple accent */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 245 70% 70%;
+
+    --secondary: 158 64% 52%;
+    /* #10B981 - Green accent */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 158 64% 65%;
+
+    /* Neutral Colors */
+    --muted: 210 11% 71%;
+    /* #9CA3AF */
+    --muted-foreground: 210 11% 46.1%;
+    --border: 210 11% 90%;
+    --input: 0 0% 100%;
+    --ring: 245 70% 59%;
+
+    /* Card Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 12.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 12.2%;
+
+    /* Interactive States */
+    --accent: 245 70% 59%;
+    --accent-foreground: 0 0% 100%;
+    --hover: 245 70% 65%;
+    --active: 245 70% 55%;
+
+    /* Semantic Colors */
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 58%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-elevated)));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--foreground) / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(var(--foreground) / 0.1), 0 2px 4px -1px hsl(var(--foreground) / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--foreground) / 0.1), 0 4px 6px -2px hsl(var(--foreground) / 0.05);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 2px 8px hsl(var(--foreground) / 0.05);
+
+    /* Border Radius */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Korean text specific styling */
+  .korean {
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    font-weight: 400;
+  }
+
+  .korean-bold {
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+
+  /* App Layout */
+  .app-container {
+    @apply min-h-screen bg-background;
+  }
+
+  .content-wrapper {
+    @apply max-w-md mx-auto px-4 py-6;
+  }
+
+  /* Surface Components */
+  .surface-card {
+    @apply bg-surface rounded-lg shadow-card border border-border;
+  }
+
+  .surface-elevated {
+    @apply bg-surface-elevated rounded-lg shadow-md border border-border;
+  }
+
+  /* Upload Area */
+  .upload-area {
+    @apply surface-card p-8 text-center transition-all duration-300;
+    @apply border-dashed border-2 border-muted;
+    @apply hover:border-primary hover:shadow-glow;
+  }
+
+  .upload-area.active {
+    @apply border-primary bg-gradient-to-br from-primary/5 to-secondary/5;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg;
+    @apply bg-gradient-primary text-primary-foreground font-medium;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-glow;
+    @apply active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg;
+    @apply bg-gradient-secondary text-secondary-foreground font-medium;
+    @apply transition-all duration-300 hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg;
+    @apply text-muted-foreground hover:text-foreground hover:bg-surface;
+    @apply transition-all duration-200;
+  }
+
+  /* Analysis Result */
+  .mood-result {
+    @apply surface-card p-6 text-center;
+    @apply animate-fade-in-up;
+  }
+
+  .mood-text {
+    @apply text-2xl korean-bold text-foreground leading-relaxed;
+    @apply animate-scale-in;
+    animation-delay: 0.2s;
+  }
+
+  .mood-emoji {
+    @apply text-6xl animate-bounce-in;
+    animation-delay: 0.1s;
+  }
+
+  /* Frame Selector */
+  .frame-selector {
+    @apply surface-card p-4 rounded-xl;
+  }
+
+  .frame-thumbnail {
+    @apply w-16 h-16 rounded-lg border-2 border-transparent;
+    @apply hover:border-primary transition-all duration-200;
+    @apply cursor-pointer object-cover;
+  }
+
+  .frame-thumbnail.selected {
+    @apply border-primary shadow-glow;
+  }
+}
+
+@layer utilities {
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  /* Background Patterns */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+
+  .bg-surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+  }
+
+  /* Text Utilities */
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+
+  .text-muted {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Shadow Utilities */
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .content-wrapper {
+    @apply px-3 py-4;
+  }
+
+  .mood-text {
+    @apply text-xl;
+  }
+
+  .mood-emoji {
+    @apply text-5xl;
+  }
+}

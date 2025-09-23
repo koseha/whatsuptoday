@@ -1,8 +1,8 @@
+import Container from '@/components/Layout/Container';
+import Footer from '@/components/Layout/Footer';
+import Header from '@/components/Layout/Header';
 import type { Metadata } from 'next';
 import './globals.css';
-import Container from '@/components/Layout/Container';
-import Header from '@/components/Layout/Header';
-import Footer from '@/components/Layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,19 +15,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className="antialiased">
-        <Container>
+        <div className="max-w-125 mx-auto w-full flex flex-col">
           <Header />
-        </Container>
 
-        <main className="flex-1 w-full">
-          <Container>{children}</Container>
-        </main>
+          <main className="flex-1 w-full">
+            <Container>
+              {children}
+            </Container>
+          </main>
 
-        <Container>
           <Footer />
-        </Container>
+        </div>
       </body>
     </html>
   );
