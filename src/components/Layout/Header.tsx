@@ -1,4 +1,4 @@
-import { Upload, Camera, Sparkles } from "lucide-react";
+import { Camera } from "lucide-react";
 import AnimatedTitle from "../common/AnimatedTitle";
 
 export default function Header() {
@@ -13,7 +13,7 @@ export default function Header() {
         </div>
         <AnimatedTitle />
         <p className="text-muted font-normal text-sm leading-relaxed">
-          오늘의 기분을 AI가 재미있게 분석해드려요<br />
+          오늘의 기분을 <span className="text-primary font-medium">AI</span>가 재미있게 분석해드려요<br />
           사진이나 동영상을 업로드해보세요
         </p>
       </div>

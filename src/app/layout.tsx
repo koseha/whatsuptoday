@@ -1,4 +1,3 @@
-import Container from '@/components/layout/BasicContainer';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
@@ -20,7 +19,7 @@ export default function RootLayout({
         <div className="max-w-125 mx-auto w-full flex flex-col">
           <Header />
 
-          <main className="flex-1 w-full">
+          <main className="flex-1 w-full animate-fade-in-up">
             {children}
           </main>
 
