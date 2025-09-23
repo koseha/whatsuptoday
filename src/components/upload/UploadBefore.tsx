@@ -10,9 +10,8 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
 
   // 텍스트 상수
   const TEXTS = {
-    uploadTitle: "사진이나 동영상을 업로드하세요",
-    uploadDescription: "파일을 드래그하거나 클릭해서 업로드",
-    selectFile: "파일 선택"
+    uploadTitle: "사진이나 동영상을 선택하세요",
+    uploadDescription: "파일을 드래그하거나 클릭해서 선택",
   };
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
