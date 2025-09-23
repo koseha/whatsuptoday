@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="antialiased">
-        <div className="max-w-125 mx-auto w-full flex flex-col gap-7">
+        <div className="max-w-125 mx-auto w-full px-2 flex flex-col gap-7">
           <Header />
 
           <main className="flex-1 w-full animate-fade-in-up">

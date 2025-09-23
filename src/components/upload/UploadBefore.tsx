@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Upload, Camera } from "lucide-react";
+import { Upload } from "lucide-react";
 
 interface UploadBeforeProps {
   onFileSelect: (file: File) => void;
@@ -58,15 +58,13 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
       }}
     >
       <div className="flex flex-col items-center space-y-4">
-        <div className="bg-gradient-hero p-4 rounded-xl">
-          <Upload className="w-8 h-8 text-white" />
-        </div>
+        <Upload className="w-16 h-16 text-primary mx-auto mb-4 upload-icon-bounce" />
 
         <div className="text-center">
-          <h3 className="korean-bold text-lg mb-2">
+          <h3 className="font-bold text-lg mb-2">
             {TEXTS.uploadTitle}
           </h3>
-          <p className="text-muted korean text-sm leading-relaxed">
+          <p className="text-muted text-sm leading-relaxed">
             {TEXTS.uploadDescription}
           </p>
         </div>
@@ -78,11 +76,6 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
           onChange={handleFileInputChange}
           className="hidden"
         />
-
-        <button className="btn-primary korean-bold">
-          <Camera className="w-4 h-4 mr-2 inline" />
-          {TEXTS.selectFile}
-        </button>
       </div>
     </div>
   );

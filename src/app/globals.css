@@ -137,12 +137,13 @@ body {
 .upload-area:hover {
   border-color: hsl(var(--primary));
   box-shadow: 0 4px 12px hsl(var(--primary) / 0.15);
+  background: linear-gradient(180deg, hsl(0 0% 100% / 0.8), hsl(var(--primary) / 0.1));
 }
 
 .upload-area.active {
   border-color: hsl(var(--primary));
-  background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--secondary) / 0.05));
-  box-shadow: 0 2px 8px hsl(var(--primary) / 0.15);
+  background: linear-gradient(180deg, hsl(0 0% 100% / 0.9), hsl(var(--primary) / 0.15));
+  box-shadow: 0 6px 16px hsl(var(--primary) / 0.2);
 }
 
 /* Button styles */
@@ -167,4 +168,25 @@ body {
 
 .btn-primary:active {
   transform: scale(0.95);
+}
+
+/* Upload icon animation */
+@keyframes bounceUpDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.upload-icon-bounce {
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover .upload-icon-bounce {
+  animation: bounceUpDown 0.6s ease-in-out infinite;
 }

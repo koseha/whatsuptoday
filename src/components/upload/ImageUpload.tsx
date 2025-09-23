@@ -1,5 +1,6 @@
 import { Play, X } from "lucide-react";
 import Image from "next/image";
+import BasicContainer from "../layout/BasicContainer";
 
 interface ImageUploadProps {
   fileUrl: string;
@@ -21,7 +22,7 @@ export default function ImageUpload({
   };
 
   return (
-    <div className="upload-area">
+    <BasicContainer>
       <div className="space-y-6">
         <div className="relative">
           <Image
@@ -62,6 +63,6 @@ export default function ImageUpload({
           </button>
         </div>
       </div>
-    </div>
+    </BasicContainer>
   );
 }
