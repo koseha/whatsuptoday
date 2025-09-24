@@ -28,6 +28,7 @@ export default function ImageUpload({
     emotions: Record<string, number>;
   } | null>(null);
   const [generatedPhrase, setGeneratedPhrase] = useState<string>('');
+  const [showTextAnimation, setShowTextAnimation] = useState<boolean>(false);
 
   // 텍스트 상수
   const TEXTS = {
@@ -44,7 +45,7 @@ export default function ImageUpload({
       const analysisStartTime = performance.now();
       console.log('🔍 얼굴 분석 시작...');
 
-      const minimumWaitTime = 2000;
+      const minimumWaitTime = 3000;
 
       try {
         // 분석 작업과 최소 대기 시간을 병렬로 실행
@@ -54,7 +55,14 @@ export default function ImageUpload({
         ]);
 
         setAnalysisResult(analysisResult);
-        setAnalysisState('analyzed');
+
+        // 텍스트 애니메이션 트리거
+        setShowTextAnimation(true);
+
+        // 애니메이션 후 상태 변경
+        setTimeout(() => {
+          setAnalysisState('analyzed');
+        }, 400); // 애니메이션 시간과 동일
 
         const totalTime = performance.now() - analysisStartTime;
         console.log(`✅ 전체 소요 시간: ${totalTime.toFixed(2)}ms`);
@@ -190,10 +198,21 @@ export default function ImageUpload({
 
         {analysisState === 'analyzing' && (
           <div className="space-y-2">
-            <p className="text-center text-muted-foreground">표정을 분석하고 있습니다...</p>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
-            </div>
+            <button
+              onClick={handleGeneratePhrase}
+              disabled={true}
+              className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden button-fill-animation"
+              style={{
+                background: 'white',
+                border: '0.5px solid hsl(245,70%,59%)',
+                color: 'hsl(245,70%,59%)'
+              }}
+            >
+              <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-out-up' : ''}`}>
+                <Sparkles className="w-4 h-4" />
+                사진 선택하는 중...
+              </div>
+            </button>
             <button
               onClick={onReset}
               className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
@@ -205,20 +224,16 @@ export default function ImageUpload({
 
         {analysisState === 'analyzed' && analysisResult && (
           <div className="space-y-2">
-            <p className="text-center text-green-600 font-medium">분석 완료!</p>
-            <p className="text-center text-sm text-muted-foreground">
-              감정: {analysisResult.dominantLabel} ({Math.round(analysisResult.dominantScore * 100)}%)
-            </p>
-            <p className="text-center text-sm text-muted-foreground">
-              나이: {analysisResult.age}세, 성별: {analysisResult.gender}
-            </p>
             <button
               onClick={handleGeneratePhrase}
               className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden bg-gradient-to-r from-[hsl(245,70%,59%)] to-[hsl(245,70%,70%)] hover:shadow-lg hover:shadow-primary/25 shimmer-effect"
+              style={{
+                border: '0.5px solid hsl(245,70%,59%)'
+              }}
             >
-              <div className="flex items-center justify-center gap-2">
+              <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-in-up' : ''}`}>
                 <Sparkles className="w-4 h-4" />
-                문구 생성하기
+                오늘의 기분 분석하기
               </div>
             </button>
             <button
@@ -254,6 +269,11 @@ export default function ImageUpload({
               </p>
             </div>
             <button
+              style={{
+                background: 'white',
+                border: '0.5px solid hsl(245,70%,59%)',
+                color: 'hsl(245,70%,59%)'
+              }}
               onClick={handleGeneratePhrase}
               className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
             >
