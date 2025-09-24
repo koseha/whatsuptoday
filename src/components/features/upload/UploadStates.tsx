@@ -1,16 +1,14 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { UploadBefore, ImageUpload, VideoUpload, SupportedFormats } from "./";
+import { UploadBefore, ImageUpload, SupportedFormats } from "./";
 
-type UploadState = 'before' | 'image' | 'video';
+type UploadState = 'before' | 'image';
 
 export default function UploadStates() {
   const [uploadState, setUploadState] = useState<UploadState>('before');
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string>('');
-  const [selectedFrameTime, setSelectedFrameTime] = useState<number>(0);
-  const [videoDuration, setVideoDuration] = useState<number>(0);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   // 텍스트 상수
@@ -25,22 +23,12 @@ export default function UploadStates() {
       setUploadState('image');
       setUploadedFile(file);
       setFileUrl(URL.createObjectURL(file));
-    } else if (file.type.startsWith('video/')) {
-      if (file.size > 100 * 1024 * 1024) { // 100MB limit
-        alert(TEXTS.errorFileSize);
-        return;
-      }
-      setUploadState('video');
-      setUploadedFile(file);
-      setFileUrl(URL.createObjectURL(file));
-      setSelectedFrameTime(0);
+    } else {
+      alert("이미지 파일만 업로드 가능합니다.");
+      return;
     }
-  }, [TEXTS.errorFileSize]);
-
-
-  const handleTimeChange = useCallback((time: number) => {
-    setSelectedFrameTime(time);
   }, []);
+
 
   const handleAnalyze = useCallback(async () => {
     if (!uploadedFile) return;
@@ -64,8 +52,6 @@ export default function UploadStates() {
       URL.revokeObjectURL(fileUrl);
       setFileUrl('');
     }
-    setSelectedFrameTime(0);
-    setVideoDuration(0);
   }, [fileUrl]);
   return (
     <>
@@ -82,19 +68,6 @@ export default function UploadStates() {
           fileUrl={fileUrl}
           onReset={handleReset}
           onAnalyze={handleAnalyze}
-          isAnalyzing={isAnalyzing}
-        />
-      )}
-
-      {/* 업로드 후 - 비디오 */}
-      {uploadState === 'video' && uploadedFile && (
-        <VideoUpload
-          fileUrl={fileUrl}
-          selectedFrameTime={selectedFrameTime}
-          videoDuration={videoDuration}
-          onReset={handleReset}
-          onAnalyze={handleAnalyze}
-          onTimeChange={handleTimeChange}
           isAnalyzing={isAnalyzing}
         />
       )}

@@ -10,8 +10,8 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
 
   // 텍스트 상수
   const TEXTS = {
-    uploadTitle: "얼굴 사진이나 동영상을 선택하세요",
-    uploadDescription: "파일을 드래그하거나 클릭해서 선택",
+    uploadTitle: "얼굴 사진을 선택하세요",
+    uploadDescription: "이미지 파일을 드래그하거나 클릭해서 선택",
   };
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -30,7 +30,7 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
 
     const files = Array.from(e.dataTransfer.files);
     const validFile = files.find(file =>
-      file.type.startsWith('image/') || file.type.startsWith('video/')
+      file.type.startsWith('image/')
     );
 
     if (validFile) {
@@ -71,7 +71,7 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
         <input
           id="file-upload"
           type="file"
-          accept="image/*,video/*"
+          accept="image/*"
           onChange={handleFileInputChange}
           className="hidden"
         />

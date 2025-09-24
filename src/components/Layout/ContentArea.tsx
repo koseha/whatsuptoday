@@ -16,7 +16,7 @@ export default function ContentArea() {
       <div className="flex items-center justify-center gap-2 py-2">
         <Shield className="w-4 h-4 text-green-600 dark:text-green-400" />
         <span className="text-xs text-green-700 dark:text-green-300 font-medium">
-          선택한 사진/동영상은 저장되지 않습니다!
+          선택한 사진은 저장되지 않습니다!
         </span>
       </div>
     </div>

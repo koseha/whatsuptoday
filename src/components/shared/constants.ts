@@ -11,7 +11,7 @@ export const TEXTS = {
   errorAnalysis: "분석 중 오류가 발생했습니다.",
 
   // 업로드 관련
-  uploadTitle: "사진이나 동영상을 업로드하세요",
+  uploadTitle: "사진을 선택하세요",
   uploadDescription: "파일을 드래그하거나 클릭해서 업로드",
   selectFile: "파일 선택",
 
@@ -27,7 +27,7 @@ export const TEXTS = {
   analyzing: "분석 중...",
 
   // 개인정보 보호
-  privacyNotice: "선택한 사진/동영상은 저장되지 않습니다!",
+  privacyNotice: "선택한 사진은 저장되지 않습니다!",
 
   // AI 분석
   aiAnalysis: "AI 기분 분석",

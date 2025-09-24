@@ -13,8 +13,7 @@ export default function Header() {
         </div>
         <AnimatedTitle />
         <p className="text-muted font-normal text-sm leading-relaxed">
-          오늘의 기분을 <span className="text-primary font-medium">AI</span>가 재미있게 분석해드려요<br />
-          사진이나 동영상을 업로드해보세요
+          오늘의 기분을 <span className="text-primary font-medium">AI</span>가 재미있게 분석해드려요
         </p>
       </div>
     </header>
