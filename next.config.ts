@@ -12,6 +12,22 @@ const nextConfig: NextConfig = {
       ...config.watchOptions,
       ignored: ['**/scripts/**'],
     };
+
+    // face-api.js 서버사이드 렌더링 문제 해결
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      encoding: false,
+      path: false,
+      crypto: false,
+    };
+
+    // TensorFlow.js 관련 설정
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: 'asset/resource',
+    });
+
     return config;
   },
 };

@@ -9,13 +9,10 @@ export default function UploadStates() {
   const [uploadState, setUploadState] = useState<UploadState>('before');
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string>('');
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   // 텍스트 상수
   const TEXTS = {
-    errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
-    successAnalysis: "분석이 완료되었습니다!",
-    errorAnalysis: "분석 중 오류가 발생했습니다."
+    errorFileSize: "파일 크기는 10MB 이하로 선택해주세요."
   };
 
   const handleFileSelect = useCallback((file: File) => {
@@ -35,22 +32,6 @@ export default function UploadStates() {
     }
   }, [TEXTS.errorFileSize]);
 
-
-  const handleAnalyze = useCallback(async () => {
-    if (!uploadedFile) return;
-
-    setIsAnalyzing(true);
-    try {
-      // Mock analysis - 실제로는 API 호출
-      await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 1000));
-      alert(TEXTS.successAnalysis);
-    } catch {
-      alert(TEXTS.errorAnalysis);
-    } finally {
-      setIsAnalyzing(false);
-    }
-  }, [uploadedFile, TEXTS.successAnalysis, TEXTS.errorAnalysis]);
-
   const handleReset = useCallback(() => {
     setUploadState('before');
     setUploadedFile(null);
@@ -59,6 +40,7 @@ export default function UploadStates() {
       setFileUrl('');
     }
   }, [fileUrl]);
+
   return (
     <>
       {/* 업로드 전 상태 */}
@@ -73,8 +55,6 @@ export default function UploadStates() {
         <ImageUpload
           fileUrl={fileUrl}
           onReset={handleReset}
-          onAnalyze={handleAnalyze}
-          isAnalyzing={isAnalyzing}
         />
       )}
     </>
