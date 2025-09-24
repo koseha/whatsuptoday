@@ -61,59 +61,42 @@ export default function ImageUpload({
           </div>
         </div>
 
-        {/* 분석 진행 중 프로그레스 바 */}
-        {isAnalyzing ? (
-          <div className="space-y-4">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
-                <span className="text-sm font-medium text-primary">분석 중...</span>
+        <div className="space-y-2">
+          {/* 분석 버튼 */}
+          <button
+            onClick={onAnalyze}
+            disabled={isAnalyzing || !isModelLoaded}
+            className={`w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden ${isAnalyzing || !isModelLoaded
+              ? 'bg-muted text-muted-foreground cursor-not-allowed'
+              : 'bg-gradient-to-r from-[hsl(245,70%,59%)] to-[hsl(245,70%,70%)] hover:shadow-lg hover:shadow-primary/25 shimmer-effect'
+              }`}
+          >
+            {isAnalyzing ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                {TEXTS.analyzing}
               </div>
-              <p className="text-xs text-muted-foreground">AI가 당신의 기분을 분석하고 있어요</p>
-            </div>
-            
-            {/* 프로그레스 바 */}
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-              <div className="h-2 bg-primary rounded-full animate-progress-fill"></div>
-            </div>
-            
-            <div className="text-center">
-              <span className="text-xs text-muted-foreground">잠시만 기다려주세요...</span>
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {/* 분석 버튼 */}
-            <button
-              onClick={onAnalyze}
-              disabled={!isModelLoaded}
-              className={`w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden ${!isModelLoaded
-                ? 'bg-muted text-muted-foreground cursor-not-allowed'
-                : 'bg-gradient-to-r from-[hsl(245,70%,59%)] to-[hsl(245,70%,70%)] hover:shadow-lg hover:shadow-primary/25 shimmer-effect'
-                }`}
-            >
-              {!isModelLoaded ? (
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  {TEXTS.modelLoading}
-                </div>
-              ) : (
-                <div className="flex items-center justify-center gap-2">
-                  <Sparkles className="w-4 h-4" />
-                  {TEXTS.analyze}
-                </div>
-              )}
-            </button>
+            ) : !isModelLoaded ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                {TEXTS.modelLoading}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                {TEXTS.analyze}
+              </div>
+            )}
+          </button>
 
-            {/* 다른 사진으로 변경 버튼 */}
-            <button
-              onClick={onReset}
-              className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
-            >
-              {TEXTS.changePhoto}
-            </button>
-          </div>
-        )}
+          {/* 다른 사진으로 변경 버튼 */}
+          <button
+            onClick={onReset}
+            className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
+          >
+            {TEXTS.changePhoto}
+          </button>
+        </div>
 
         {/* 분석 결과 표시 */}
         {analysisResult && (
