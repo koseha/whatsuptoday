@@ -84,9 +84,6 @@ export default function AnalysisStates({ imageUrl, onReset }: AnalysisStatesProp
         console.log('Face Landmark 모델 로딩 중...');
         await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
 
-        console.log('Face Recognition 모델 로딩 중...');
-        await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
-
         console.log('Face Expression 모델 로딩 중...');
         await faceapi.nets.faceExpressionNet.loadFromUri('/models');
 
