@@ -24,17 +24,24 @@ export default function ImageUpload({
   return (
     <BasicContainer>
       <div className="space-y-6">
-        <div className="relative">
-          <Image
-            src={fileUrl}
-            alt="Uploaded"
-            width={800}
-            height={600}
-            className="w-full max-h-96 object-contain rounded-lg"
-          />
+        <div className="relative w-full max-w-md mx-auto">
+          {/* 이미지 컨테이너 - 정사각형 비율로 고정 */}
+          <div className="relative w-full aspect-square bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm">
+            <Image
+              src={fileUrl}
+              alt="업로드된 이미지"
+              fill
+              className="object-cover"
+              style={{ objectPosition: 'center' }}
+              sizes="(max-width: 768px) 100vw, 400px"
+            />
+          </div>
+
+          {/* 리셋 버튼 */}
           <button
             onClick={onReset}
-            className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition-colors"
+            className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition-colors z-10"
+            aria-label="이미지 제거"
           >
             <X className="w-4 h-4" />
           </button>
