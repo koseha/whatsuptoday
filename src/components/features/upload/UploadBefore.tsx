@@ -63,7 +63,7 @@ export default function UploadBefore({ onFileSelect }: UploadBeforeProps) {
           <h3 className="font-bold text-lg mb-2">
             {TEXTS.uploadTitle}
           </h3>
-          <p className="text-muted text-sm leading-relaxed">
+          <p className="text-muted text-sm leading-relaxed mb-2">
             {TEXTS.uploadDescription}
           </p>
         </div>

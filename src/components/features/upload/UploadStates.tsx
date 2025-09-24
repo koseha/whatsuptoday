@@ -13,13 +13,19 @@ export default function UploadStates() {
 
   // 텍스트 상수
   const TEXTS = {
-    errorFileSize: "파일 크기는 100MB 이하로 선택해주세요.",
+    errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
     successAnalysis: "분석이 완료되었습니다!",
     errorAnalysis: "분석 중 오류가 발생했습니다."
   };
 
   const handleFileSelect = useCallback((file: File) => {
     if (file.type.startsWith('image/')) {
+      // 파일 크기 검증 (10MB = 10 * 1024 * 1024 bytes)
+      if (file.size > 10 * 1024 * 1024) {
+        alert(TEXTS.errorFileSize);
+        return;
+      }
+
       setUploadState('image');
       setUploadedFile(file);
       setFileUrl(URL.createObjectURL(file));
@@ -27,7 +33,7 @@ export default function UploadStates() {
       alert("이미지 파일만 업로드 가능합니다.");
       return;
     }
-  }, []);
+  }, [TEXTS.errorFileSize]);
 
 
   const handleAnalyze = useCallback(async () => {
