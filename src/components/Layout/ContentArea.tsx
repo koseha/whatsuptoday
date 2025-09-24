@@ -2,6 +2,8 @@
 
 import { useCallback, useState } from "react";
 import { UploadBefore, ImageUpload, VideoUpload, SupportedFormats } from "../upload";
+import BasicContainer from "./BasicContainer";
+import { Shield, Sparkles } from "lucide-react";
 
 type UploadState = 'before' | 'image' | 'video';
 
@@ -73,11 +75,13 @@ export default function ContentArea() {
   }, [fileUrl]);
 
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-2 md:gap-7">
       {/* 업로드 전 상태 */}
-      {uploadState === 'before' && (
+      {uploadState === 'before' && <>
         <UploadBefore onFileSelect={handleFileSelect} />
-      )}
+        <SupportedFormats />
+      </>
+      }
 
       {/* 업로드 후 - 사진 */}
       {uploadState === 'image' && uploadedFile && (
@@ -103,8 +107,19 @@ export default function ContentArea() {
         />
       )}
 
-      {/* 지원 형식 정보 */}
-      <SupportedFormats />
+      <BasicContainer>
+        <Sparkles className="w-6 h-6 text-primary mx-auto mb-2" />
+        <h3 className="font-bold text-sm mb-1">AI 기분 분석</h3>
+        <p className="text-xs text-muted">표정과 분위기를 재미있게 해석</p>
+      </BasicContainer>
+
+      <div className="flex items-center justify-center gap-2 py-2">
+        <Shield className="w-4 h-4 text-green-600 dark:text-green-400" />
+        <span className="text-xs text-green-700 dark:text-green-300 font-medium">
+          선택한 사진/동영상은 저장되지 않습니다!
+        </span>
+      </div>
+
     </div>
   );
 }

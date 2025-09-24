@@ -2,8 +2,6 @@ import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import './globals.css';
-import BasicContainer from '../components/layout/BasicContainer';
-import { Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,14 +22,6 @@ export default function RootLayout({
           <main className="flex-1 w-full animate-fade-in-up">
             {children}
           </main>
-
-          <div className="animate-fade-in-up">
-            <BasicContainer>
-              <Sparkles className="w-6 h-6 text-primary mx-auto mb-2" />
-              <h3 className="font-bold text-sm mb-1">AI 기분 분석</h3>
-              <p className="text-xs text-muted">표정과 분위기를 재미있게 해석</p>
-            </BasicContainer>
-          </div>
 
           <Footer />
         </div>
