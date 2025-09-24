@@ -88,6 +88,7 @@ export default function UploadStates() {
       setUploadState('image');
       setUploadedFile(file);
       setFileUrl(URL.createObjectURL(file));
+      setAnalysisResult(null); // 이전 분석 결과 초기화
     } else {
       alert("이미지 파일만 업로드 가능합니다.");
       return;
