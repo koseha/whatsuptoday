@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Play, Clock, X } from "lucide-react";
-import BasicContainer from "../layout/BasicContainer";
+import BasicContainer from "../../ui/BasicContainer";
 
 interface VideoUploadProps {
   fileUrl: string;
@@ -9,7 +9,6 @@ interface VideoUploadProps {
   onReset: () => void;
   onAnalyze: () => void;
   onTimeChange: (time: number) => void;
-  onLoadedMetadata: () => void;
   isAnalyzing: boolean;
 }
 
@@ -20,7 +19,6 @@ export default function VideoUpload({
   onReset,
   onAnalyze,
   onTimeChange,
-  onLoadedMetadata,
   isAnalyzing
 }: VideoUploadProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -56,7 +54,6 @@ export default function VideoUpload({
             ref={videoRef}
             src={fileUrl}
             className="w-full max-h-96 object-contain"
-            onLoadedMetadata={onLoadedMetadata}
             controls={false}
           />
           <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2">

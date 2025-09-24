@@ -1,5 +1,5 @@
 import { Camera, Video } from "lucide-react";
-import BasicContainer from "../layout/BasicContainer";
+import BasicContainer from "../../ui/BasicContainer";
 
 export default function SupportedFormats() {
   // 텍스트 상수

@@ -1,6 +1,6 @@
 import { Play, X } from "lucide-react";
 import Image from "next/image";
-import BasicContainer from "../layout/BasicContainer";
+import BasicContainer from "../../ui/BasicContainer";
 
 interface ImageUploadProps {
   fileUrl: string;

@@ -1,5 +1,5 @@
 import { Camera } from "lucide-react";
-import AnimatedTitle from "../common/AnimatedTitle";
+import AnimatedTitle from "../ui/AnimatedTitle";
 
 export default function Header() {
 
