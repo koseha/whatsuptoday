@@ -9,32 +9,10 @@ export default function UploadStates() {
   const [uploadState, setUploadState] = useState<UploadState>('before');
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string>('');
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [isModelLoaded, setIsModelLoaded] = useState(false);
-  const [analysisResult, setAnalysisResult] = useState<{
-    emotions: {
-      happy: number;
-      sad: number;
-      angry: number;
-      fearful: number;
-      surprised: number;
-      disgusted: number;
-      neutral: number;
-    };
-    age: number;
-    gender: string;
-    dominantEmotion: string;
-    dominantLabel: string;
-    dominantScore: number;
-    emotionLabels: Record<string, string>;
-    aiPhrase: string;
-  } | null>(null);
 
   // 텍스트 상수
   const TEXTS = {
     errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
-    successAnalysis: "분석이 완료되었습니다!",
-    errorAnalysis: "분석 중 오류가 발생했습니다."
   };
 
   // face-api.js 모델 로딩
@@ -65,17 +43,16 @@ export default function UploadStates() {
         await faceapi.nets.ageGenderNet.loadFromUri('/models');
 
         console.log('모든 모델 로딩 완료');
-        setIsModelLoaded(true);
       } catch (error) {
         console.error('모델 로딩 실패:', error);
         // 개발 환경에서는 더미 데이터 사용
         console.log('더미 데이터 모드로 전환');
-        setIsModelLoaded(true);
       }
     };
 
     loadModels();
   }, []);
+
 
   const handleFileSelect = useCallback((file: File) => {
     if (file.type.startsWith('image/')) {
@@ -88,7 +65,6 @@ export default function UploadStates() {
       setUploadState('image');
       setUploadedFile(file);
       setFileUrl(URL.createObjectURL(file));
-      setAnalysisResult(null); // 이전 분석 결과 초기화
     } else {
       alert("이미지 파일만 업로드 가능합니다.");
       return;
@@ -97,14 +73,9 @@ export default function UploadStates() {
 
   const handleAnalyze = useCallback(async () => {
     if (!uploadedFile) return;
-    if (!isModelLoaded) {
-      alert('모델이 아직 로딩 중입니다. 잠시 후 다시 시도해주세요.');
-      return;
-    }
 
-    setIsAnalyzing(true);
     try {
-      // face-api.js 분석 시작 (모델이 이미 로드됨)
+      // face-api.js 분석 시작
       const faceapi = await import('face-api.js');
 
       console.log('TinyYolov2 모델을 사용한 얼굴 감지 시작...');
@@ -167,27 +138,13 @@ export default function UploadStates() {
 
       const aiPhrase = aiPhrases[Math.floor(Math.random() * aiPhrases.length)];
 
-      // 분석 결과 저장
-      const result = {
-        emotions,
-        age,
-        gender,
-        dominantEmotion,
-        dominantLabel,
-        dominantScore,
-        emotionLabels,
-        aiPhrase
-      };
-
-      setAnalysisResult(result);
+      console.log('분석 완료:', { dominantEmotion, dominantLabel, dominantScore, aiPhrase });
 
     } catch (error) {
       console.error('분석 오류:', error);
       alert(`분석 중 오류가 발생했습니다: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
-    } finally {
-      setIsAnalyzing(false);
     }
-  }, [uploadedFile, fileUrl, isModelLoaded]);
+  }, [uploadedFile, fileUrl]);
 
   const handleReset = useCallback(() => {
     setUploadState('before');
@@ -213,9 +170,6 @@ export default function UploadStates() {
           fileUrl={fileUrl}
           onReset={handleReset}
           onAnalyze={handleAnalyze}
-          isAnalyzing={isAnalyzing}
-          isModelLoaded={isModelLoaded}
-          analysisResult={analysisResult}
         />
       )}
     </>
