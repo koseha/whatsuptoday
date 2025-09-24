@@ -1,12 +1,6 @@
 @import 'tailwindcss';
 
-@font-face {
-  font-family: 'Pretendard';
-  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/PretendardVariable.woff2') format('woff2-variations');
-  font-weight: 45 920;
-  font-style: normal;
-  font-display: swap;
-}
+/* 시스템 폰트 사용 - CDN 오류 방지 */
 
 :root {
   --primary: 245 70% 59%;
@@ -22,8 +16,8 @@
   --border: 210 11% 90%;
   --muted: 210 11% 71%;
   --muted-foreground: 210 11% 46.1%;
-  --font-pretendard:
-    'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  --font-system:
+    -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
     'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     sans-serif;
@@ -36,8 +30,8 @@
   --color-background-container: var(--background-container);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --font-sans: var(--font-pretendard);
-  --font-mono: var(--font-pretendard);
+  --font-sans: var(--font-system);
+  --font-mono: var(--font-system);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,7 +50,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-pretendard);
+  font-family: var(--font-system);
 }
 
 /* Text utilities */
