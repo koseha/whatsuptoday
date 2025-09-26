@@ -1,5 +1,5 @@
 import { Share2 } from "lucide-react";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useCallback } from "react";
 import { toPng } from "html-to-image";
 import ShareableResult from "./ShareableResult";
 
@@ -25,7 +25,6 @@ export default function ShareButton({
 }: ShareButtonProps) {
   const screenshotRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [preparedScreenshot, setPreparedScreenshot] = useState<string | null>(null);
 
   // 이미지 다운로드 함수
   const downloadImage = (dataUrl: string, filename: string) => {
@@ -39,88 +38,50 @@ export default function ShareButton({
   const generateScreenshot = useCallback(async () => {
     if (!screenshotRef.current) throw new Error('스크린샷 요소를 찾을 수 없습니다.');
 
-    console.log('스크린샷 생성 시작 - userImage:', userImage);
-    console.log('스크린샷 요소:', screenshotRef.current);
-
     try {
-      // 이미지가 완전히 로드될 때까지 대기 (더 강력한 대기)
-      let images = screenshotRef.current.querySelectorAll('img');
-      console.log('초기 이미지 개수:', images.length);
+      // 사파리에서 이미지 강제 로드 및 대체
+      const images = screenshotRef.current.querySelectorAll('img');
+      for (const img of images) {
+        const htmlImg = img as HTMLImageElement;
+        if (htmlImg.src) {
+          // 새로운 이미지 요소로 교체
+          const newImg = new Image();
+          newImg.crossOrigin = 'anonymous';
+          newImg.style.width = '100%';
+          newImg.style.height = '100%';
+          newImg.style.objectFit = 'cover';
 
-      // 이미지가 없으면 최대 5초까지 대기
-      let attempts = 0;
-      const maxAttempts = 10;
-
-      while (images.length === 0 && attempts < maxAttempts) {
-        console.log(`이미지 대기 시도 ${attempts + 1}/${maxAttempts}`);
-        await new Promise(resolve => setTimeout(resolve, 500));
-        images = screenshotRef.current.querySelectorAll('img');
-        console.log(`시도 ${attempts + 1} 후 이미지 개수:`, images.length);
-        attempts++;
-      }
-
-      if (images.length === 0) {
-        console.log('이미지를 찾을 수 없음, 스크린샷 생성 진행');
-      } else {
-        console.log('이미지 발견, 로드 대기 중...');
-
-        const imageLoadPromises = Array.from(images).map((img, index) => {
-          return new Promise((resolve) => {
-            console.log(`이미지 ${index} 로드 상태:`, img.complete, img.naturalWidth, img.naturalHeight);
-
-            if (img.complete && img.naturalWidth > 0) {
-              console.log(`이미지 ${index} 이미 로드됨`);
+          await new Promise((resolve) => {
+            newImg.onload = () => {
+              // 원본 이미지 교체
+              htmlImg.src = newImg.src;
               resolve(true);
-            } else {
-              console.log(`이미지 ${index} 로드 대기 중...`);
-              img.onload = () => {
-                console.log(`이미지 ${index} 로드 완료`);
-                resolve(true);
-              };
-              img.onerror = () => {
-                console.log(`이미지 ${index} 로드 실패`);
-                resolve(true); // 로드 실패해도 계속 진행
-              };
-            }
+            };
+            newImg.onerror = () => {
+              console.log('이미지 로드 실패, 원본 유지');
+              resolve(false);
+            };
+            newImg.src = htmlImg.src;
           });
-        });
-
-        await Promise.all(imageLoadPromises);
-        console.log('모든 이미지 로드 완료');
+        }
       }
 
-      // 최종 대기 시간 (렌더링 완료 보장)
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      console.log('최종 대기 완료');
+      // 사파리에서 충분한 대기 시간
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       const dataUrl = await toPng(screenshotRef.current, {
         quality: 0.95,
         pixelRatio: 2,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
       });
 
-      console.log('스크린샷 생성 완료');
       return dataUrl;
     } catch (error) {
       console.error('스크린샷 생성 실패:', error);
       throw error;
     }
-  }, [userImage]);
+  }, []);
 
-  // completed 상태가 되자마자 스크린샷 미리 준비
-  useEffect(() => {
-    if (generatedPhrase && analysisResult && userImage) {
-      console.log('스크린샷 미리 준비 시작');
-      generateScreenshot()
-        .then((screenshot) => {
-          console.log('스크린샷 미리 준비 완료');
-          setPreparedScreenshot(screenshot);
-        })
-        .catch((error) => {
-          console.error('스크린샷 미리 준비 실패:', error);
-        });
-    }
-  }, [generatedPhrase, analysisResult, userImage, generateScreenshot]);
 
   // 공유 함수
   const handleShare = async () => {
@@ -129,18 +90,10 @@ export default function ShareButton({
     setIsGenerating(true);
 
     try {
-      // 1. 미리 준비된 스크린샷 사용 또는 새로 생성
-      let screenshot: string;
+      // 스크린샷 생성
+      const screenshot = await generateScreenshot();
 
-      if (preparedScreenshot) {
-        console.log('미리 준비된 스크린샷 사용');
-        screenshot = preparedScreenshot;
-      } else {
-        console.log('스크린샷 새로 생성');
-        screenshot = await generateScreenshot();
-      }
-
-      // 2. Web Share API로 공유
+      // Web Share API로 공유
       if (navigator.share) {
         const blob = await fetch(screenshot).then(r => r.blob());
         const file = new File([blob], 'whatsuptoday-result.png', { type: 'image/png' });

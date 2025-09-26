@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import Image from "next/image";
+import { forwardRef } from "react";
 
 interface ShareableResultProps {
   generatedPhrase: string;
@@ -45,12 +45,15 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
       {userImage && (
         <div className="flex justify-center mb-5">
           <div className="w-56 h-72 rounded-lg overflow-hidden border-4 border-white">
-            <Image
+            <img
               src={userImage}
               alt="분석 이미지"
               width={224}
               height={288}
               className="w-full h-full object-cover"
+              crossOrigin="anonymous"
+              loading="eager"
+              decoding="sync"
             />
           </div>
         </div>
