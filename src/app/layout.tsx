@@ -15,15 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="antialiased">
-        <div className="max-w-125 mx-auto w-full px-2 flex flex-col gap-7">
-          <Header />
+      <body className="antialiased min-h-screen">
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="max-w-125 w-full px-2 flex flex-col gap-7">
+            <Header />
 
-          <main className="flex-1 w-full animate-fade-in-up">
-            {children}
-          </main>
+            <main className="w-full animate-fade-in-up">
+              {children}
+            </main>
 
-          <Footer />
+            <Footer />
+          </div>
         </div>
       </body>
     </html>
