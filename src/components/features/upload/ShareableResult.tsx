@@ -110,7 +110,7 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
       {/* 하단 브랜딩 */}
       <div className="text-center">
         <p className="text-xs text-gray-500">
-          #AI감정분석 #whatsuptoday.instoo.kr
+          #AI감정분석 #whatsuptoday.pages.dev
         </p>
       </div>
     </div>
