@@ -3,6 +3,7 @@
 import { Sparkles, Search, FileText, PenTool } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { createClient } from '@supabase/supabase-js';
 import BasicContainer from "../../ui/BasicContainer";
 
 type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
@@ -11,6 +12,30 @@ interface ImageUploadProps {
   fileUrl: string;
   onReset: () => void;
   modelsLoaded: boolean;
+}
+
+// Supabase 클라이언트 초기화
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+const generatePhrase = async (expressions: Record<string, number>) => {
+  try {
+    const { data, error } = await supabase.functions.invoke('generate', {
+      body: { expressions }
+    });
+
+    if (error) {
+      console.error('Supabase function error:', error);
+      throw new Error(`Supabase function error: ${error.message}`);
+    }
+
+    return data;
+  } catch (error) {
+    console.error('generatePhrase error:', error);
+    throw error;
+  }
 }
 
 export default function ImageUpload({
@@ -158,22 +183,11 @@ export default function ImageUpload({
         setGeneratingPhase('writing');
       }, 3000);
 
-      // GPT API 요청 시뮬레이션 (실제로는 API 호출)
-      await new Promise(resolve => setTimeout(resolve, 6000)); // 6초 대기
+      // 실제 generatePhrase 함수 호출
+      const result = await generatePhrase(analysisResult.emotions);
 
-      // AI 문구 생성 (더미 데이터)
-      const aiPhrases = [
-        "오늘은 정말 좋은 하루네요! ✨",
-        "약간 피곤해 보이시는데, 푹 쉬세요! 😴",
-        "밝은 미소가 정말 예쁘네요! 😊",
-        "오늘 하루도 화이팅! 💪",
-        "평온한 표정이 좋아요! 🧘‍♀️",
-        "에너지가 넘치는 하루네요! ⚡",
-        "차분하고 안정적인 기분이 느껴져요! 🌸",
-        "오늘도 수고하셨어요! 👏"
-      ];
-
-      const aiPhrase = aiPhrases[Math.floor(Math.random() * aiPhrases.length)];
+      // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
+      const aiPhrase = result.text || result.phrase || result.message || "분석 결과를 생성했습니다.";
       setGeneratedPhrase(aiPhrase);
       setAnalysisState('completed');
 
