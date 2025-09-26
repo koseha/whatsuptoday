@@ -1,11 +1,11 @@
 "use client";
 
 import { Sparkles, Search, FileText, PenTool } from "lucide-react";
-import { useCallback, useState } from "react";
-import { createClient } from '@supabase/supabase-js';
+import { useState } from "react";
 import BasicContainer from "../../ui/BasicContainer";
 import ImageDisplay from "./ImageDisplay";
-import { useFaceAnalysis, type FaceAnalysisResult } from "../../hooks/useFaceAnalysis";
+import { useFaceAnalysis } from "../../hooks/useFaceAnalysis";
+import { usePhraseGeneration } from "../../hooks/usePhraseGeneration";
 
 type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
 
@@ -15,29 +15,6 @@ interface ImageUploadProps {
   modelsLoaded: boolean;
 }
 
-// Supabase 클라이언트 초기화
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
-const generatePhrase = async (expressions: Record<string, number>) => {
-  try {
-    const { data, error } = await supabase.functions.invoke('generate', {
-      body: { expressions }
-    });
-
-    if (error) {
-      console.error('Supabase function error:', error);
-      throw new Error(`Supabase function error: ${error.message}`);
-    }
-
-    return data;
-  } catch (error) {
-    console.error('generatePhrase error:', error);
-    throw error;
-  }
-}
 
 export default function ImageUpload({
   fileUrl,
@@ -45,8 +22,8 @@ export default function ImageUpload({
   modelsLoaded
 }: ImageUploadProps) {
   const { analysisState, analysisResult, showTextAnimation } = useFaceAnalysis(fileUrl, modelsLoaded);
-  const [generatedPhrase, setGeneratedPhrase] = useState<string>('');
-  const [generatingPhase, setGeneratingPhase] = useState<'search' | 'writing'>('search');
+  const { generatedPhrase, generatingPhase, handleGeneratePhrase } = usePhraseGeneration(analysisResult);
+  const [currentAnalysisState, setCurrentAnalysisState] = useState<AnalysisState>('analyzing');
 
   // 텍스트 상수
   const TEXTS = {
@@ -57,32 +34,15 @@ export default function ImageUpload({
 
 
 
-  const handleGeneratePhrase = useCallback(async () => {
-    if (!analysisResult) return;
-
-    setAnalysisState('generating');
-    setGeneratingPhase('search');
-
+  const handleGenerate = async () => {
+    setCurrentAnalysisState('generating');
     try {
-      // 3초 후 글쓰기 애니메이션으로 전환
-      setTimeout(() => {
-        setGeneratingPhase('writing');
-      }, 3000);
-
-      // 실제 generatePhrase 함수 호출
-      const result = await generatePhrase(analysisResult.emotions);
-
-      // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
-      const aiPhrase = result.text || result.phrase || result.message || "분석 결과를 생성했습니다.";
-      setGeneratedPhrase(aiPhrase);
-      setAnalysisState('completed');
-
+      await handleGeneratePhrase();
+      setCurrentAnalysisState('completed');
     } catch (error) {
-      console.error('문구 생성 오류:', error);
-      alert('문구 생성 중 오류가 발생했습니다.');
-      setAnalysisState('analyzed');
+      setCurrentAnalysisState('analyzed');
     }
-  }, [analysisResult]);
+  };
 
   return (
     <BasicContainer>
@@ -94,7 +54,7 @@ export default function ImageUpload({
         {analysisState === 'analyzing' && (
           <div className="space-y-2">
             <button
-              onClick={handleGeneratePhrase}
+              onClick={handleGenerate}
               disabled={true}
               className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden button-fill-animation"
               style={{
@@ -120,7 +80,7 @@ export default function ImageUpload({
         {analysisState === 'analyzed' && analysisResult && (
           <div className="space-y-2">
             <button
-              onClick={handleGeneratePhrase}
+              onClick={handleGenerate}
               className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden bg-gradient-to-r from-[hsl(245,70%,59%)] to-[hsl(245,70%,70%)] hover:shadow-lg hover:shadow-primary/25 shimmer-effect"
               style={{
                 border: '0.5px solid hsl(245,70%,59%)'
@@ -140,7 +100,7 @@ export default function ImageUpload({
           </div>
         )}
 
-        {analysisState === 'generating' && (
+        {currentAnalysisState === 'generating' && (
           <div className="space-y-6">
             {/* AI 로딩 애니메이션 */}
             <div className="flex flex-col items-center space-y-4">
@@ -229,7 +189,7 @@ export default function ImageUpload({
           </div>
         )}
 
-        {analysisState === 'completed' && generatedPhrase && (
+        {currentAnalysisState === 'completed' && generatedPhrase && (
           <div className="space-y-2">
             <p className="text-center text-green-600 font-medium">문구 생성 완료!</p>
             <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border">
@@ -243,7 +203,7 @@ export default function ImageUpload({
                 border: '0.5px solid hsl(245,70%,59%)',
                 color: 'hsl(245,70%,59%)'
               }}
-              onClick={handleGeneratePhrase}
+              onClick={handleGenerate}
               className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
             >
               다른 문구 생성하기
