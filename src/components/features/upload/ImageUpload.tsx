@@ -1,10 +1,10 @@
 "use client";
 
 import { Sparkles, Search, FileText, PenTool } from "lucide-react";
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from '@supabase/supabase-js';
 import BasicContainer from "../../ui/BasicContainer";
+import ImageDisplay from "./ImageDisplay";
 
 type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
 
@@ -201,19 +201,7 @@ export default function ImageUpload({
   return (
     <BasicContainer>
       <div className="space-y-4">
-        <div className="relative w-full max-w-md mx-auto">
-          {/* 이미지 컨테이너 - 정사각형 비율로 고정 */}
-          <div className="relative w-full aspect-square bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm">
-            <Image
-              src={fileUrl}
-              alt="업로드된 이미지"
-              fill
-              className="object-cover"
-              style={{ objectPosition: 'center' }}
-              sizes="(max-width: 768px) 100vw, 400px"
-            />
-          </div>
-        </div>
+        <ImageDisplay fileUrl={fileUrl} />
 
         {/* 상태별 UI 렌더링 */}
 
