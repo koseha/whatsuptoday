@@ -68,7 +68,7 @@ export default function ImageUpload({
         )}
 
         {analysisState === 'completed' && generatedPhrase && (
-          <AnalysisResultDisplay 
+          <AnalysisResultDisplay
             generatedPhrase={generatedPhrase}
             analysisResult={analysisResult}
             onRegenerate={handleGenerate}

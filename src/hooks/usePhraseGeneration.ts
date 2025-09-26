@@ -44,7 +44,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
       const result = { text: "분석 결과를 생성했습니다." };
 
       // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
-      const aiPhrase = result.text || result.phrase || result.message || "분석 결과를 생성했습니다.";
+      const aiPhrase = result.text || "분석 결과를 생성했습니다.";
       setGeneratedPhrase(aiPhrase);
 
       return 'completed'; // 성공 상태 반환

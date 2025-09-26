@@ -1,3 +1,5 @@
+import { Sparkles } from "lucide-react";
+
 interface AnalysisResultDisplayProps {
   generatedPhrase: string;
   analysisResult: {
@@ -42,8 +44,12 @@ export default function AnalysisResultDisplay({
     <div className="space-y-4">
 
       {/* AI 생성 문구 */}
-      <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border">
-        <p className="text-center text-lg font-medium text-gray-800">
+      <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <Sparkles className="w-5 h-5 text-purple-600" />
+          <span className="text-sm font-medium text-purple-600">AI</span>
+        </div>
+        <p className="text-center text-lg font-medium text-purple-800">
           {generatedPhrase}
         </p>
       </div>
