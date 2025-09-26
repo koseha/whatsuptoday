@@ -6,6 +6,7 @@ import AILoadingAnimation from "./AILoadingAnimation";
 import AnalysisResultDisplay from "./AnalysisResultDisplay";
 import AnalyzingButton from "./AnalyzingButton";
 import GenerateButton from "./GenerateButton";
+import DetectionFailedButton from "./DetectionFailedButton";
 import { useFaceAnalysis } from "@/hooks/useFaceAnalysis";
 import { usePhraseGeneration } from "@/hooks/usePhraseGeneration";
 
@@ -39,6 +40,7 @@ export default function ImageUpload({
       setAnalysisState('analyzed');
     }
   };
+
 
   return (
     <BasicContainer>
@@ -77,6 +79,12 @@ export default function ImageUpload({
           />
         )}
 
+        {analysisState === 'detection-failed' && (
+          <DetectionFailedButton
+            onReset={onReset}
+            changePhotoText={TEXTS.changePhoto}
+          />
+        )}
 
       </div>
     </BasicContainer>

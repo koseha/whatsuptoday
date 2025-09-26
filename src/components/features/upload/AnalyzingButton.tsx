@@ -6,10 +6,10 @@ interface AnalyzingButtonProps {
   changePhotoText: string;
 }
 
-export default function AnalyzingButton({ 
-  showTextAnimation, 
-  onReset, 
-  changePhotoText 
+export default function AnalyzingButton({
+  showTextAnimation,
+  onReset,
+  changePhotoText
 }: AnalyzingButtonProps) {
   return (
     <div className="space-y-2">
@@ -24,7 +24,7 @@ export default function AnalyzingButton({
       >
         <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-out-up' : ''}`}>
           <Sparkles className="w-4 h-4" />
-          사진 선택하는 중...
+          사진 가져오는 중...
         </div>
       </button>
       <button

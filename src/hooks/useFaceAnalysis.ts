@@ -9,7 +9,7 @@ export interface FaceAnalysisResult {
   emotions: Record<string, number>;
 }
 
-export type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
+export type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed' | 'detection-failed';
 
 export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
   const [analysisState, setAnalysisState] = useState<AnalysisState>('analyzing');
@@ -49,8 +49,14 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
       } catch (error) {
         // 에러 시에도 최소 시간은 보장됨 (Promise.all 특성)
         console.error(`❌ 분석 실패:`, error);
-        alert(`분석 중 오류가 발생했습니다: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
-        setAnalysisState('analyzing');
+
+        // 얼굴 감지 실패인지 확인
+        if (error instanceof Error && error.message.includes('감지가 되지 않는군요')) {
+          setAnalysisState('detection-failed');
+        } else {
+          alert(`분석 중 오류가 발생했습니다: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
+          setAnalysisState('analyzing');
+        }
       }
     };
 
@@ -81,7 +87,7 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
       console.log(`얼굴 감지 완료: ${detections.length}개 얼굴 발견`);
 
       if (detections.length === 0) {
-        throw new Error('얼굴을 감지할 수 없습니다');
+        throw new Error('인간. 혹시 얼굴이 없습니까? 감지가 되지 않는군요.');
       }
 
       const detection = detections[0];

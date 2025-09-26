@@ -10,8 +10,13 @@ const supabase = createClient(
 
 const generatePhrase = async (expressions: Record<string, number>) => {
   try {
+    // 소수점 4자리로 제한
+    const roundedExpressions = Object.fromEntries(
+      Object.entries(expressions).map(([key, value]) => [key, parseFloat(value.toFixed(4))])
+    );
+
     const { data, error } = await supabase.functions.invoke('generate', {
-      body: { expressions }
+      body: { expressions: roundedExpressions }
     });
 
     if (error) {
@@ -40,8 +45,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
       }, 3000);
 
       // 실제 generatePhrase 함수 호출
-      //const result = await generatePhrase(analysisResult.emotions);
-      const result = { text: "분석 결과를 생성했습니다." };
+      const result = await generatePhrase(analysisResult.emotions);
 
       // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
       const aiPhrase = result.text || "분석 결과를 생성했습니다.";
@@ -51,8 +55,10 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
 
     } catch (error) {
       console.error('문구 생성 오류:', error);
-      alert('문구 생성 중 오류가 발생했습니다.');
-      throw error;
+      // 에러 발생 시 기본 문구 사용
+      const defaultPhrase = "오늘도 수고하셨어요! 💫";
+      setGeneratedPhrase(defaultPhrase);
+      return 'completed'; // 성공 상태로 처리
     }
   }, [analysisResult]);
 
