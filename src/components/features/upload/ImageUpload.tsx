@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import BasicContainer from "@/components/ui/BasicContainer";
 import ImageDisplay from "./ImageDisplay";
 import AILoadingAnimation from "./AILoadingAnimation";
@@ -9,8 +8,6 @@ import AnalyzingButton from "./AnalyzingButton";
 import GenerateButton from "./GenerateButton";
 import { useFaceAnalysis } from "@/hooks/useFaceAnalysis";
 import { usePhraseGeneration } from "@/hooks/usePhraseGeneration";
-
-type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
 
 interface ImageUploadProps {
   fileUrl: string;
@@ -24,9 +21,8 @@ export default function ImageUpload({
   onReset,
   modelsLoaded
 }: ImageUploadProps) {
-  const { analysisState, analysisResult, showTextAnimation } = useFaceAnalysis(fileUrl, modelsLoaded);
+  const { analysisState, setAnalysisState, analysisResult, showTextAnimation } = useFaceAnalysis(fileUrl, modelsLoaded);
   const { generatedPhrase, generatingPhase, handleGeneratePhrase } = usePhraseGeneration(analysisResult);
-  const [currentAnalysisState, setCurrentAnalysisState] = useState<AnalysisState>('analyzing');
 
   // 텍스트 상수
   const TEXTS = {
@@ -38,12 +34,12 @@ export default function ImageUpload({
 
 
   const handleGenerate = async () => {
-    setCurrentAnalysisState('generating');
+    setAnalysisState('generating');
     try {
       await handleGeneratePhrase();
-      setCurrentAnalysisState('completed');
+      setAnalysisState('completed');
     } catch {
-      setCurrentAnalysisState('analyzed');
+      setAnalysisState('analyzed');
     }
   };
 
@@ -70,12 +66,12 @@ export default function ImageUpload({
           />
         )}
 
-        {currentAnalysisState === 'generating' && (
+        {analysisState === 'generating' && (
           <AILoadingAnimation phase={generatingPhase} />
         )}
 
-        {currentAnalysisState === 'completed' && generatedPhrase && (
-          <AnalysisResultDisplay
+        {analysisState === 'completed' && generatedPhrase && (
+          <AnalysisResultDisplay 
             generatedPhrase={generatedPhrase}
             onRegenerate={handleGenerate}
             onReset={onReset}

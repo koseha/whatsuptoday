@@ -9,7 +9,7 @@ export interface FaceAnalysisResult {
   emotions: Record<string, number>;
 }
 
-export type AnalysisState = 'analyzing' | 'analyzed' | 'analyzing';
+export type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
 
 export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
   const [analysisState, setAnalysisState] = useState<AnalysisState>('analyzing');
@@ -125,6 +125,7 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
 
   return {
     analysisState,
+    setAnalysisState,
     analysisResult,
     showTextAnimation
   };
