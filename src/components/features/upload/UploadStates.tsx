@@ -16,6 +16,11 @@ export default function UploadStates() {
     errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
   };
 
+  // 페이지 로드 시 스크롤을 최상단으로 이동
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   // face-api.js 모델 로딩 (페이지 방문 시)
   useEffect(() => {
     const loadModels = async () => {
