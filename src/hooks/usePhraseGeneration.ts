@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { type FaceAnalysisResult } from './useFaceAnalysis';
+import { type FaceAnalysisResult } from '@/hooks/useFaceAnalysis';
 
 // Supabase 클라이언트 초기화
 const supabase = createClient(

@@ -1,5 +1,5 @@
 import { Camera, HardDrive } from "lucide-react";
-import BasicContainer from "../../ui/BasicContainer";
+import BasicContainer from "@/components/ui/BasicContainer";
 
 export default function SupportedFormats() {
   // 텍스트 상수

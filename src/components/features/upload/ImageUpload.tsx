@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import BasicContainer from "../../ui/BasicContainer";
+import BasicContainer from "@/components/ui/BasicContainer";
 import ImageDisplay from "./ImageDisplay";
 import AILoadingAnimation from "./AILoadingAnimation";
 import AnalysisResultDisplay from "./AnalysisResultDisplay";
 import AnalyzingButton from "./AnalyzingButton";
 import GenerateButton from "./GenerateButton";
-import { useFaceAnalysis } from "../../hooks/useFaceAnalysis";
-import { usePhraseGeneration } from "../../hooks/usePhraseGeneration";
+import { useFaceAnalysis } from "@/hooks/useFaceAnalysis";
+import { usePhraseGeneration } from "@/hooks/usePhraseGeneration";
 
 type AnalysisState = 'analyzing' | 'analyzed' | 'generating' | 'completed';
 
@@ -54,7 +54,7 @@ export default function ImageUpload({
 
         {/* 상태별 UI 렌더링 */}
         {analysisState === 'analyzing' && (
-          <AnalyzingButton 
+          <AnalyzingButton
             showTextAnimation={showTextAnimation}
             onReset={onReset}
             changePhotoText={TEXTS.changePhoto}
@@ -62,7 +62,7 @@ export default function ImageUpload({
         )}
 
         {analysisState === 'analyzed' && analysisResult && (
-          <GenerateButton 
+          <GenerateButton
             showTextAnimation={showTextAnimation}
             onGenerate={handleGenerate}
             onReset={onReset}
