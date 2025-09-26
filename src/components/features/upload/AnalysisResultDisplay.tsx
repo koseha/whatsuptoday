@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import ShareButton from "./ShareButton";
 
 interface AnalysisResultDisplayProps {
   generatedPhrase: string;
@@ -10,6 +11,7 @@ interface AnalysisResultDisplayProps {
     gender: string;
     emotions: Record<string, number>;
   } | null;
+  userImage?: string;
   onRegenerate: () => void;
   onReset: () => void;
 }
@@ -17,6 +19,7 @@ interface AnalysisResultDisplayProps {
 export default function AnalysisResultDisplay({
   generatedPhrase,
   analysisResult,
+  userImage,
   onRegenerate,
   onReset
 }: AnalysisResultDisplayProps) {
@@ -100,6 +103,15 @@ export default function AnalysisResultDisplay({
           </div>
         </div>
       )}
+
+      {/* 공유 버튼 */}
+      <ShareButton
+        generatedPhrase={generatedPhrase}
+        analysisResult={analysisResult}
+        userImage={userImage}
+        onShareSuccess={() => console.log('공유 성공!')}
+      />
+
       <button
         style={{
           background: 'white',

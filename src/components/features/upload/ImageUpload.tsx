@@ -71,6 +71,7 @@ export default function ImageUpload({
           <AnalysisResultDisplay
             generatedPhrase={generatedPhrase}
             analysisResult={analysisResult}
+            userImage={fileUrl}
             onRegenerate={handleGenerate}
             onReset={onReset}
           />
