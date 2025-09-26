@@ -1,11 +1,12 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import BasicContainer from "../../ui/BasicContainer";
 import ImageDisplay from "./ImageDisplay";
 import AILoadingAnimation from "./AILoadingAnimation";
 import AnalysisResultDisplay from "./AnalysisResultDisplay";
+import AnalyzingButton from "./AnalyzingButton";
+import GenerateButton from "./GenerateButton";
 import { useFaceAnalysis } from "../../hooks/useFaceAnalysis";
 import { usePhraseGeneration } from "../../hooks/usePhraseGeneration";
 
@@ -41,7 +42,7 @@ export default function ImageUpload({
     try {
       await handleGeneratePhrase();
       setCurrentAnalysisState('completed');
-    } catch (error) {
+    } catch {
       setCurrentAnalysisState('analyzed');
     }
   };
@@ -52,54 +53,21 @@ export default function ImageUpload({
         <ImageDisplay fileUrl={fileUrl} />
 
         {/* 상태별 UI 렌더링 */}
-
         {analysisState === 'analyzing' && (
-          <div className="space-y-2">
-            <button
-              onClick={handleGenerate}
-              disabled={true}
-              className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden button-fill-animation"
-              style={{
-                background: 'white',
-                border: '0.5px solid hsl(245,70%,59%)',
-                color: 'hsl(245,70%,59%)'
-              }}
-            >
-              <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-out-up' : ''}`}>
-                <Sparkles className="w-4 h-4" />
-                사진 선택하는 중...
-              </div>
-            </button>
-            <button
-              onClick={onReset}
-              className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
-            >
-              {TEXTS.changePhoto}
-            </button>
-          </div>
+          <AnalyzingButton 
+            showTextAnimation={showTextAnimation}
+            onReset={onReset}
+            changePhotoText={TEXTS.changePhoto}
+          />
         )}
 
         {analysisState === 'analyzed' && analysisResult && (
-          <div className="space-y-2">
-            <button
-              onClick={handleGenerate}
-              className="w-full px-6 py-3 rounded-lg font-bold transition-all text-white cursor-pointer relative overflow-hidden bg-gradient-to-r from-[hsl(245,70%,59%)] to-[hsl(245,70%,70%)] hover:shadow-lg hover:shadow-primary/25 shimmer-effect"
-              style={{
-                border: '0.5px solid hsl(245,70%,59%)'
-              }}
-            >
-              <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-in-up' : ''}`}>
-                <Sparkles className="w-4 h-4" />
-                오늘의 기분 분석하기
-              </div>
-            </button>
-            <button
-              onClick={onReset}
-              className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
-            >
-              {TEXTS.changePhoto}
-            </button>
-          </div>
+          <GenerateButton 
+            showTextAnimation={showTextAnimation}
+            onGenerate={handleGenerate}
+            onReset={onReset}
+            changePhotoText={TEXTS.changePhoto}
+          />
         )}
 
         {currentAnalysisState === 'generating' && (
@@ -107,7 +75,7 @@ export default function ImageUpload({
         )}
 
         {currentAnalysisState === 'completed' && generatedPhrase && (
-          <AnalysisResultDisplay 
+          <AnalysisResultDisplay
             generatedPhrase={generatedPhrase}
             onRegenerate={handleGenerate}
             onReset={onReset}
