@@ -15,7 +15,6 @@ interface ImageUploadProps {
   modelsLoaded: boolean;
 }
 
-
 export default function ImageUpload({
   fileUrl,
   onReset,
@@ -30,8 +29,6 @@ export default function ImageUpload({
     changePhoto: "다른 사진으로 변경",
     errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
   };
-
-
 
   const handleGenerate = async () => {
     setAnalysisState('generating');
@@ -73,6 +70,7 @@ export default function ImageUpload({
         {analysisState === 'completed' && generatedPhrase && (
           <AnalysisResultDisplay 
             generatedPhrase={generatedPhrase}
+            analysisResult={analysisResult}
             onRegenerate={handleGenerate}
             onReset={onReset}
           />
