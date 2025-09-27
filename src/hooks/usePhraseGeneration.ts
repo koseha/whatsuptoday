@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { type FaceAnalysisResult } from '@/hooks/useFaceAnalysis';
+import { useLanguage } from '@/hooks/useLanguage';
 
 // Supabase 클라이언트 초기화
 const supabase = createClient(
@@ -8,7 +9,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-const generatePhrase = async (analysisResult: FaceAnalysisResult) => {
+const generatePhrase = async (analysisResult: FaceAnalysisResult, language: string) => {
   try {
     // 소수점 4자리로 제한
     const roundedExpressions = Object.fromEntries(
@@ -22,7 +23,7 @@ const generatePhrase = async (analysisResult: FaceAnalysisResult) => {
         age: analysisResult.age,
         gender: analysisResult.gender,
         emotions: roundedExpressions,
-        lang: "한국어"
+        lang: language
       }
     });
 
@@ -41,6 +42,7 @@ const generatePhrase = async (analysisResult: FaceAnalysisResult) => {
 export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) => {
   const [generatedPhrase, setGeneratedPhrase] = useState<string>('');
   const [generatingPhase, setGeneratingPhase] = useState<'search' | 'writing'>('search');
+  const { selectedLanguage } = useLanguage();
 
   const handleGeneratePhrase = useCallback(async () => {
     if (!analysisResult) return;
@@ -52,7 +54,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
       }, 3000);
 
       // 실제 generatePhrase 함수 호출
-      const result = await generatePhrase(analysisResult);
+      const result = await generatePhrase(analysisResult, selectedLanguage);
 
       // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
       const aiPhrase = result.text || "분석 결과를 생성했습니다.";
@@ -67,7 +69,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
       setGeneratedPhrase(defaultPhrase);
       return 'completed'; // 성공 상태로 처리
     }
-  }, [analysisResult]);
+  }, [analysisResult, selectedLanguage]);
 
   return {
     generatedPhrase,
