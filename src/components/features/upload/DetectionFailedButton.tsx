@@ -1,4 +1,5 @@
 import { AlertCircle, Camera } from "lucide-react";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface DetectionFailedButtonProps {
   onReset: () => void;
@@ -9,6 +10,7 @@ export default function DetectionFailedButton({
   onReset,
   changePhotoText
 }: DetectionFailedButtonProps) {
+  const t = useAppTranslations();
   return (
     <div className="space-y-4">
       {/* 감지 실패 안내 */}
@@ -20,10 +22,10 @@ export default function DetectionFailedButton({
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
-            얼굴을 찾을 수 없어요 😅
+            {t.detection.failed()}
           </h3>
           <p className="text-sm text-gray-600 mb-4">
-            더 선명하고 밝은 사진으로 다시 시도해보세요!
+            {t.detection.failedDescription()}
           </p>
         </div>
       </div>
@@ -42,11 +44,11 @@ export default function DetectionFailedButton({
 
       {/* 도움말 팁 */}
       <div className="bg-blue-50 p-3 rounded-lg text-sm text-blue-700">
-        <p className="font-medium mb-1">💡 팁:</p>
+        <p className="font-medium mb-1">{t.detection.tips.title()}</p>
         <ul className="space-y-1 text-xs">
-          <li>• 조명이 충분한 곳에서 촬영해보세요</li>
-          <li>• 얼굴이 화면 중앙에 오도록 해보세요</li>
-          <li>• 표정이 명확하게 보이는 사진이 좋아요</li>
+          <li>{t.detection.tips.lighting()}</li>
+          <li>{t.detection.tips.center()}</li>
+          <li>{t.detection.tips.expression()}</li>
         </ul>
       </div>
     </div>

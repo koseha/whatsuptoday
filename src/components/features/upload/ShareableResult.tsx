@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { forwardRef } from "react";
 
 interface ShareableResultProps {
@@ -45,6 +44,7 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
       {userImage && (
         <div className="flex justify-center mb-5">
           <div className="w-56 h-72 rounded-lg overflow-hidden border-4 border-white">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={userImage}
               alt="분석 이미지"

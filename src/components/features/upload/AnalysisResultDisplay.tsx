@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
 import ShareButton from "./ShareButton";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface AnalysisResultDisplayProps {
   generatedPhrase: string;
@@ -23,22 +24,24 @@ export default function AnalysisResultDisplay({
   onRegenerate,
   onReset
 }: AnalysisResultDisplayProps) {
+  const t = useAppTranslations();
+
   // 감정 라벨 매핑
   const emotionLabels = {
-    happy: "😊 행복",
-    sad: "😢 슬픔",
-    angry: "😠 화남",
-    fearful: "😨 두려움",
-    surprised: "😲 놀람",
-    disgusted: "🤢 혐오",
-    neutral: "😐 차분함"
+    happy: t.analysis.emotions.happy(),
+    sad: t.analysis.emotions.sad(),
+    angry: t.analysis.emotions.angry(),
+    fearful: t.analysis.emotions.fearful(),
+    surprised: t.analysis.emotions.surprised(),
+    disgusted: t.analysis.emotions.disgusted(),
+    neutral: t.analysis.emotions.neutral()
   };
 
   // 성별 변환 함수
   const getGenderLabel = (gender: string) => {
     switch (gender) {
-      case 'male': return '남성';
-      case 'female': return '여성';
+      case 'male': return t.analysis.gender.male();
+      case 'female': return t.analysis.gender.female();
       default: return gender;
     }
   };
@@ -121,13 +124,13 @@ export default function AnalysisResultDisplay({
         onClick={onRegenerate}
         className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
       >
-        다른 문구 생성하기
+        {t.result.regenerate()}
       </button>
       <button
         onClick={onReset}
         className="w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-[0.5px] border-border rounded-lg hover:bg-muted cursor-pointer"
       >
-        다른 사진으로 변경
+        {t.upload.changePhoto()}
       </button>
     </div>
   );

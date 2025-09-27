@@ -1,0 +1,67 @@
+{
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "retry": "다시 시도",
+    "close": "닫기",
+    "cancel": "취소",
+    "confirm": "확인"
+  },
+  "upload": {
+    "title": "사진을 선택하세요",
+    "description": "파일을 드래그하거나 클릭해서 업로드",
+    "selectFile": "파일 선택",
+    "supportedFormats": "지원 형식",
+    "imageFormats": "JPG, PNG, WEBP",
+    "videoFormats": "MP4, WebM",
+    "privacyNotice": "선택한 사진은 저장되지 않습니다!",
+    "fileSizeError": "파일 크기는 10MB 이하로 선택해주세요.",
+    "changePhoto": "다른 사진으로 변경"
+  },
+  "analysis": {
+    "analyzing": "사진 가져오는 중...",
+    "analyze": "기분 분석하기",
+    "analyzeTitle": "오늘의 기분",
+    "aiAnalysis": "AI 기분 분석",
+    "aiDescription": "표정과 분위기를 재미있게 해석",
+    "successAnalysis": "분석이 완료되었습니다!",
+    "errorAnalysis": "분석 중 오류가 발생했습니다.",
+    "emotions": {
+      "happy": "😊 행복",
+      "sad": "😢 슬픔",
+      "angry": "😠 화남",
+      "fearful": "😨 두려움",
+      "surprised": "😲 놀람",
+      "disgusted": "🤢 혐오",
+      "neutral": "😐 차분함"
+    },
+    "gender": {
+      "male": "남성",
+      "female": "여성"
+    }
+  },
+  "detection": {
+    "failed": "얼굴을 찾을 수 없어요 😅",
+    "failedDescription": "더 선명하고 밝은 사진으로 다시 시도해보세요!",
+    "tips": {
+      "title": "💡 팁:",
+      "lighting": "• 조명이 충분한 곳에서 촬영해보세요",
+      "center": "• 얼굴이 화면 중앙에 오도록 해보세요",
+      "expression": "• 표정이 명확하게 보이는 사진이 좋아요"
+    }
+  },
+  "ai": {
+    "generating": "AI가 문구를 생성하고 있어요...",
+    "phases": {
+      "analyzing": "표정을 분석하고 있어요",
+      "thinking": "어떤 문구가 좋을지 생각하고 있어요",
+      "creating": "재미있는 문구를 만들고 있어요",
+      "finalizing": "마지막으로 다듬고 있어요"
+    }
+  },
+  "result": {
+    "regenerate": "다시 생성하기",
+    "share": "공유하기",
+    "download": "다운로드"
+  }
+}

@@ -9,6 +9,7 @@ import GenerateButton from "./GenerateButton";
 import DetectionFailedButton from "./DetectionFailedButton";
 import { useFaceAnalysis } from "@/hooks/useFaceAnalysis";
 import { usePhraseGeneration } from "@/hooks/usePhraseGeneration";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface ImageUploadProps {
   fileUrl: string;
@@ -23,13 +24,7 @@ export default function ImageUpload({
 }: ImageUploadProps) {
   const { analysisState, setAnalysisState, analysisResult, showTextAnimation } = useFaceAnalysis(fileUrl, modelsLoaded);
   const { generatedPhrase, generatingPhase, handleGeneratePhrase } = usePhraseGeneration(analysisResult);
-
-  // 텍스트 상수
-  const TEXTS = {
-    analyze: "오늘의 기분",
-    changePhoto: "다른 사진으로 변경",
-    errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
-  };
+  const t = useAppTranslations();
 
   const handleGenerate = async () => {
     setAnalysisState('generating');
@@ -52,7 +47,7 @@ export default function ImageUpload({
           <AnalyzingButton
             showTextAnimation={showTextAnimation}
             onReset={onReset}
-            changePhotoText={TEXTS.changePhoto}
+            changePhotoText={t.upload.changePhoto()}
           />
         )}
 
@@ -61,7 +56,7 @@ export default function ImageUpload({
             showTextAnimation={showTextAnimation}
             onGenerate={handleGenerate}
             onReset={onReset}
-            changePhotoText={TEXTS.changePhoto}
+            changePhotoText={t.upload.changePhoto()}
           />
         )}
 
@@ -82,7 +77,7 @@ export default function ImageUpload({
         {analysisState === 'detection-failed' && (
           <DetectionFailedButton
             onReset={onReset}
-            changePhotoText={TEXTS.changePhoto}
+            changePhotoText={t.upload.changePhoto()}
           />
         )}
 

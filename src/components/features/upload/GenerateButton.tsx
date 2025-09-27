@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface GenerateButtonProps {
   showTextAnimation: boolean;
@@ -13,6 +14,7 @@ export default function GenerateButton({
   onReset, 
   changePhotoText 
 }: GenerateButtonProps) {
+  const t = useAppTranslations();
   return (
     <div className="space-y-2">
       <button
@@ -24,7 +26,7 @@ export default function GenerateButton({
       >
         <div className={`flex items-center justify-center gap-2 ${showTextAnimation ? 'text-fade-in-up' : ''}`}>
           <Sparkles className="w-4 h-4" />
-          오늘의 기분 분석하기
+          {t.analysis.analyze()}
         </div>
       </button>
       <button

@@ -1,10 +1,12 @@
 import { Search, FileText, PenTool } from "lucide-react";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface AILoadingAnimationProps {
   phase: 'search' | 'writing';
 }
 
 export default function AILoadingAnimation({ phase }: AILoadingAnimationProps) {
+  const t = useAppTranslations();
   return (
     <div className="space-y-6">
       {/* AI 로딩 애니메이션 */}
@@ -84,10 +86,10 @@ export default function AILoadingAnimation({ phase }: AILoadingAnimationProps) {
 
         <div className="text-center space-y-2">
           <h3 className="text-lg font-medium text-foreground">
-            {phase === 'search' ? 'AI가 분석하고 있습니다' : 'AI가 결과를 작성하고 있습니다'}
+            {phase === 'search' ? t.ai.phases.analyzing() : t.ai.phases.creating()}
           </h3>
           <p className="text-muted-foreground text-sm">
-            {phase === 'search' ? '요청을 분석하고 있습니다...' : '최적의 문구를 작성하고 있습니다...'}
+            {phase === 'search' ? t.ai.phases.thinking() : t.ai.phases.finalizing()}
           </p>
         </div>
       </div>
