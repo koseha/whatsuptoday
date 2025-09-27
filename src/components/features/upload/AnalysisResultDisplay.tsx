@@ -112,7 +112,7 @@ export default function AnalysisResultDisplay({
         generatedPhrase={generatedPhrase}
         analysisResult={analysisResult}
         userImage={userImage}
-        onShareSuccess={() => console.log('공유 성공!')}
+        onShareSuccess={() => { }}
       />
 
       <button

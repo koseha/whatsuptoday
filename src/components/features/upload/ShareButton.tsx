@@ -60,7 +60,6 @@ export default function ShareButton({
               resolve(true);
             };
             newImg.onerror = () => {
-              console.log('이미지 로드 실패, 원본 유지');
               resolve(false);
             };
             newImg.src = htmlImg.src;

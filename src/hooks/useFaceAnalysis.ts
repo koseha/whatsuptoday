@@ -21,9 +21,6 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
     if (!modelsLoaded) return;
 
     const analyzeImage = async () => {
-      const analysisStartTime = performance.now();
-      console.log('🔍 얼굴 분석 시작...');
-
       const minimumWaitTime = 3000;
 
       try {
@@ -43,8 +40,6 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
           setAnalysisState('analyzed');
         }, 400); // 애니메이션 시간과 동일
 
-        const totalTime = performance.now() - analysisStartTime;
-        console.log(`✅ 전체 소요 시간: ${totalTime.toFixed(2)}ms`);
 
       } catch (error) {
         // 에러 시에도 최소 시간은 보장됨 (Promise.all 특성)
@@ -64,27 +59,17 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
     const performAnalysis = async (): Promise<FaceAnalysisResult> => {
       const faceapi = await import('face-api.js');
 
-      console.log('TinyYolov2 모델을 사용한 얼굴 감지 시작...');
-
       // 이미지 로드
-      const imageLoadStartTime = performance.now();
       const response = await fetch(fileUrl);
       const blob = await response.blob();
       const img = await faceapi.bufferToImage(blob);
-      const imageLoadTime = performance.now() - imageLoadStartTime;
-      console.log(`📷 이미지 로드 시간: ${imageLoadTime.toFixed(2)}ms`);
 
       // 얼굴 감지 및 분석
-      const detectionStartTime = performance.now();
       const detections = await faceapi
         .detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
         .withFaceExpressions()
         .withAgeAndGender();
-      const detectionTime = performance.now() - detectionStartTime;
-      console.log(`🎯 얼굴 감지 시간: ${detectionTime.toFixed(2)}ms`);
-
-      console.log(`얼굴 감지 완료: ${detections.length}개 얼굴 발견`);
 
       if (detections.length === 0) {
         throw new Error('인간. 혹시 얼굴이 없습니까? 감지가 되지 않는군요.');
@@ -94,9 +79,6 @@ export const useFaceAnalysis = (fileUrl: string, modelsLoaded: boolean) => {
       const emotions = detection.expressions;
       const age = Math.round(detection.age);
       const gender = detection.gender;
-
-      console.log('감정 분석 결과:', emotions);
-      console.log('추가 정보:', { age, gender });
 
       // 결과 처리
       const dominantEmotion = Object.entries(emotions).reduce((a, b) =>

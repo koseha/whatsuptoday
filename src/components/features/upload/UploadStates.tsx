@@ -2,7 +2,6 @@
 
 import { useCallback, useState, useEffect } from "react";
 import { UploadBefore, ImageUpload, SupportedFormats } from "./";
-import LanguageSelector from "@/components/ui/LanguageSelector";
 import { useAppTranslations } from "@/hooks/useTranslations";
 import { useFaceApiModels } from "@/hooks/useFaceApiModels";
 
