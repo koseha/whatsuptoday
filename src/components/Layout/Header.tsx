@@ -1,4 +1,5 @@
 import { Camera } from "lucide-react";
+import Link from "next/link";
 import AnimatedTitle from "../ui/AnimatedTitle";
 import { useAppTranslations } from "@/hooks/useTranslations";
 
@@ -9,9 +10,11 @@ export default function Header() {
     <header className="pt-10">
       <div className="text-center animate-fade-in">
         <div className="flex items-center justify-center mb-4">
-          <div className="bg-gradient-hero p-3 rounded-xl shadow-glow">
-            <Camera className="w-8 h-8 text-white" />
-          </div>
+          <Link href="/" className="block">
+            <div className="bg-gradient-hero p-3 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 cursor-pointer">
+              <Camera className="w-8 h-8 text-white" />
+            </div>
+          </Link>
         </div>
         <AnimatedTitle />
         <p className="text-muted font-normal text-sm leading-relaxed">
