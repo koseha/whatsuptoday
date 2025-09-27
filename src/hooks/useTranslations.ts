@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 
 export const useAppTranslations = () => {
   const t = useTranslations();
-  
+
   return {
     // 공통 텍스트
     common: {
@@ -13,7 +13,7 @@ export const useAppTranslations = () => {
       cancel: () => t('common.cancel'),
       confirm: () => t('common.confirm'),
     },
-    
+
     // 업로드 관련
     upload: {
       title: () => t('upload.title'),
@@ -26,7 +26,7 @@ export const useAppTranslations = () => {
       fileSizeError: () => t('upload.fileSizeError'),
       changePhoto: () => t('upload.changePhoto'),
     },
-    
+
     // 분석 관련
     analysis: {
       analyzing: () => t('analysis.analyzing'),
@@ -36,6 +36,7 @@ export const useAppTranslations = () => {
       aiDescription: () => t('analysis.aiDescription'),
       successAnalysis: () => t('analysis.successAnalysis'),
       errorAnalysis: () => t('analysis.errorAnalysis'),
+      mainEmotion: () => t('analysis.mainEmotion'),
       emotions: {
         happy: () => t('analysis.emotions.happy'),
         sad: () => t('analysis.emotions.sad'),
@@ -50,7 +51,7 @@ export const useAppTranslations = () => {
         female: () => t('analysis.gender.female'),
       },
     },
-    
+
     // 감지 실패 관련
     detection: {
       failed: () => t('detection.failed'),
@@ -62,7 +63,7 @@ export const useAppTranslations = () => {
         expression: () => t('detection.tips.expression'),
       },
     },
-    
+
     // AI 관련
     ai: {
       generating: () => t('ai.generating'),
@@ -73,12 +74,13 @@ export const useAppTranslations = () => {
         finalizing: () => t('ai.phases.finalizing'),
       },
     },
-    
+
     // 결과 관련
     result: {
       regenerate: () => t('result.regenerate'),
       share: () => t('result.share'),
       download: () => t('result.download'),
+      hashtag: () => t('result.hashtag'),
     },
   };
 };

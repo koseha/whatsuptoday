@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface ShareableResultProps {
   generatedPhrase: string;
@@ -18,22 +19,23 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
   analysisResult,
   userImage
 }, ref) => {
+  const t = useAppTranslations();
   // 감정 라벨 매핑
   const emotionLabels = {
-    happy: "😊 행복",
-    sad: "😢 슬픔",
-    angry: "😠 화남",
-    fearful: "😨 두려움",
-    surprised: "😲 놀람",
-    disgusted: "🤢 혐오",
-    neutral: "😐 차분함"
+    happy: t.analysis.emotions.happy(),
+    sad: t.analysis.emotions.sad(),
+    angry: t.analysis.emotions.angry(),
+    fearful: t.analysis.emotions.fearful(),
+    surprised: t.analysis.emotions.surprised(),
+    disgusted: t.analysis.emotions.disgusted(),
+    neutral: t.analysis.emotions.neutral()
   };
 
   // 성별 변환 함수
   const getGenderLabel = (gender: string) => {
     switch (gender) {
-      case 'male': return '남성';
-      case 'female': return '여성';
+      case 'male': return t.analysis.gender.male();
+      case 'female': return t.analysis.gender.female();
       default: return gender;
     }
   };
@@ -69,7 +71,7 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
       {/* 주요 분석 결과 */}
       {analysisResult && (
         <div className="text-center bg-white rounded-lg p-4 mb-4">
-          <p className="text-sm text-gray-600 mb-1">주요 감정</p>
+          <p className="text-sm text-gray-600 mb-1">{t.analysis.mainEmotion()}</p>
           <p className="text-lg font-bold text-purple-600">
             {emotionLabels[analysisResult.dominantEmotion as keyof typeof emotionLabels]} {(analysisResult.dominantScore * 100).toFixed(1)}%
           </p>
@@ -110,7 +112,7 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
       {/* 하단 브랜딩 */}
       <div className="text-center">
         <p className="text-xs text-gray-500">
-          #AI감정분석 #whatsuptoday.pages.dev
+          #{t.result.hashtag()} #whatsuptoday.pages.dev
         </p>
       </div>
     </div>

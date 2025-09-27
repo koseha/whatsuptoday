@@ -100,7 +100,8 @@ export default function ShareButton({
 
         const shareData = {
           title: '오늘의 기분 분석 결과',
-          text: 'WhatUpToday로 오늘의 기분을 분석해보세요!',
+          text: 'WhatsUpToday • 오늘의 기분',
+          url: 'https://whatsuptoday.pages.dev',
           files: [file]
         };
 
