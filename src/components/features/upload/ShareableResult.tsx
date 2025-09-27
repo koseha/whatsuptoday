@@ -76,7 +76,7 @@ const ShareableResult = forwardRef<HTMLDivElement, ShareableResultProps>(({
             {emotionLabels[analysisResult.dominantEmotion as keyof typeof emotionLabels]} {(analysisResult.dominantScore * 100).toFixed(1)}%
           </p>
           <p className="text-sm text-gray-500">
-            {analysisResult.age}세 {getGenderLabel(analysisResult.gender)}
+            {analysisResult.age}{t.analysis.ageSuffix()} {getGenderLabel(analysisResult.gender)}
           </p>
         </div>
       )}

@@ -3,6 +3,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { UploadBefore, ImageUpload, SupportedFormats } from "./";
 import LanguageSelector from "@/components/ui/LanguageSelector";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 type UploadState = 'before' | 'image';
 
@@ -11,11 +12,7 @@ export default function UploadStates() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileUrl, setFileUrl] = useState<string>('');
   const [modelsLoaded, setModelsLoaded] = useState<boolean>(false);
-
-  // 텍스트 상수
-  const TEXTS = {
-    errorFileSize: "파일 크기는 10MB 이하로 선택해주세요.",
-  };
+  const t = useAppTranslations();
 
   // 페이지 로드 시 스크롤을 최상단으로 이동
   useEffect(() => {
@@ -67,7 +64,7 @@ export default function UploadStates() {
     if (file.type.startsWith('image/')) {
       // 파일 크기 검증 (10MB = 10 * 1024 * 1024 bytes)
       if (file.size > 10 * 1024 * 1024) {
-        alert(TEXTS.errorFileSize);
+        alert(t.upload.fileSizeError());
         return;
       }
 
@@ -78,7 +75,7 @@ export default function UploadStates() {
       alert("이미지 파일만 업로드 가능합니다.");
       return;
     }
-  }, [TEXTS.errorFileSize]);
+  }, [t]);
 
 
   const handleReset = useCallback(() => {

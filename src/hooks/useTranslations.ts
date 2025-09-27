@@ -14,6 +14,13 @@ export const useAppTranslations = () => {
       confirm: () => t('common.confirm'),
     },
 
+    // 헤더 관련
+    header: {
+      description: () => t('header.description'),
+      aiText: () => t('header.aiText'),
+      descriptionEnd: () => t('header.descriptionEnd'),
+    },
+
     // 업로드 관련
     upload: {
       title: () => t('upload.title'),
@@ -25,6 +32,7 @@ export const useAppTranslations = () => {
       privacyNotice: () => t('upload.privacyNotice'),
       fileSizeError: () => t('upload.fileSizeError'),
       changePhoto: () => t('upload.changePhoto'),
+      maxFileSize: () => t('upload.maxFileSize'),
     },
 
     // 분석 관련
@@ -50,6 +58,7 @@ export const useAppTranslations = () => {
         male: () => t('analysis.gender.male'),
         female: () => t('analysis.gender.female'),
       },
+      ageSuffix: () => t('analysis.ageSuffix'),
     },
 
     // 감지 실패 관련
@@ -81,6 +90,7 @@ export const useAppTranslations = () => {
       share: () => t('result.share'),
       download: () => t('result.download'),
       hashtag: () => t('result.hashtag'),
+      generating: () => t('result.generating'),
     },
   };
 };

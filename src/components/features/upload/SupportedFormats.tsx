@@ -15,7 +15,7 @@ export default function SupportedFormats() {
         </div>
         <div className="flex items-center text-muted">
           <HardDrive className="w-4 h-4 mr-1" />
-          최대 10MB
+          {t.upload.maxFileSize()}
         </div>
       </div>
     </BasicContainer>

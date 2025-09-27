@@ -12,7 +12,6 @@ export default function LanguageSelector() {
   return (
     <div className="relative">
       <div className="flex items-center gap-2 px-3 py-2 text-sm bg-background-container rounded-lg border border-border opacity-60 cursor-not-allowed">
-        <span className="text-lg">{selectedLang?.flag}</span>
         <span className="hidden sm:inline">{selectedLang?.name}</span>
         <span className="text-xs text-muted-foreground">(준비 중)</span>
       </div>

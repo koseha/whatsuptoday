@@ -1,7 +1,9 @@
 import { Camera } from "lucide-react";
 import AnimatedTitle from "../ui/AnimatedTitle";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 export default function Header() {
+  const t = useAppTranslations();
 
   return (
     <header className="pt-10">
@@ -13,7 +15,7 @@ export default function Header() {
         </div>
         <AnimatedTitle />
         <p className="text-muted font-normal text-sm leading-relaxed">
-          오늘의 기분을 <span className="text-primary font-medium">AI</span>가 재미있게 분석해드려요
+          {t.header.description()} <span className="text-primary font-medium">{t.header.aiText()}</span>{t.header.descriptionEnd()}
         </p>
       </div>
     </header>

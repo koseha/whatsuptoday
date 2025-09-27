@@ -66,9 +66,9 @@ export default function AnalysisResultDisplay({
           {/* 주요 감정 */}
           <div className="p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">주요 감정</span>
+              <span className="text-sm font-medium text-gray-600">{t.analysis.mainEmotion()}</span>
               <span className="text-sm text-gray-500">
-                {analysisResult.age}세 {getGenderLabel(analysisResult.gender)}
+                {analysisResult.age}{t.analysis.ageSuffix()} {getGenderLabel(analysisResult.gender)}
               </span>
             </div>
             <div className="flex items-center justify-between">

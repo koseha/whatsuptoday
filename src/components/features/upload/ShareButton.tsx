@@ -2,6 +2,7 @@ import { Share2 } from "lucide-react";
 import { useRef, useState, useCallback } from "react";
 import { toPng } from "html-to-image";
 import ShareableResult from "./ShareableResult";
+import { useAppTranslations } from "@/hooks/useTranslations";
 
 interface ShareButtonProps {
   generatedPhrase: string;
@@ -25,6 +26,7 @@ export default function ShareButton({
 }: ShareButtonProps) {
   const screenshotRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
+  const t = useAppTranslations();
 
   // 이미지 다운로드 함수
   const downloadImage = (dataUrl: string, filename: string) => {
@@ -161,12 +163,12 @@ export default function ShareButton({
         {isGenerating ? (
           <>
             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            생성 중...
+            {t.result.generating()}
           </>
         ) : (
           <>
             <Share2 className="w-4 h-4" />
-            공유하기
+            {t.result.share()}
           </>
         )}
       </button>
