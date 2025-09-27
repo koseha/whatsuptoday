@@ -54,9 +54,9 @@ export default function UploadStates() {
     <>
       {/* 업로드 전 상태 */}
       {uploadState === 'before' && <>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           <LanguageSelector />
-        </div>
+        </div> */}
         <UploadBefore onFileSelect={handleFileSelect} />
         <SupportedFormats />
       </>
