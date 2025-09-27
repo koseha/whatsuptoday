@@ -8,15 +8,22 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-const generatePhrase = async (expressions: Record<string, number>) => {
+const generatePhrase = async (analysisResult: FaceAnalysisResult) => {
   try {
     // 소수점 4자리로 제한
     const roundedExpressions = Object.fromEntries(
-      Object.entries(expressions).map(([key, value]) => [key, parseFloat(value.toFixed(4))])
+      Object.entries(analysisResult.emotions).map(([key, value]) => [key, parseFloat(value.toFixed(4))])
     );
 
     const { data, error } = await supabase.functions.invoke('generate', {
-      body: { expressions: roundedExpressions }
+      body: {
+        dominantEmotion: analysisResult.dominantEmotion,
+        dominantScore: analysisResult.dominantScore,
+        age: analysisResult.age,
+        gender: analysisResult.gender,
+        emotions: roundedExpressions,
+        lang: "한국어"
+      }
     });
 
     if (error) {
@@ -45,7 +52,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
       }, 3000);
 
       // 실제 generatePhrase 함수 호출
-      const result = await generatePhrase(analysisResult.emotions);
+      const result = await generatePhrase(analysisResult);
 
       // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)
       const aiPhrase = result.text || "분석 결과를 생성했습니다.";
