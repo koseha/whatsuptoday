@@ -39,9 +39,9 @@ export default function Project() {
                   <h3 className="text-lg font-medium mb-3">AI & Backend</h3>
                   <ul className="list-disc pl-6 space-y-1">
                     <li><strong>Face-API.js:</strong> 얼굴 감지 및 감정 분석</li>
-                    <li><strong>Supabase:</strong> Edge Functions로 AI 문구 생성</li>
+                    <li><strong>Supabase:</strong> Edge Functions + Gemini API로 AI 문구 생성</li>
                     <li><strong>TensorFlow.js:</strong> 클라이언트 사이드 AI 실행</li>
-                    <li><strong>WebGL:</strong> GPU 가속을 통한 성능 최적화</li>
+                    <li><strong>WebGL:</strong> TensorFlow.js GPU 가속으로 AI 분석 성능 최적화</li>
                   </ul>
                 </div>
               </div>
@@ -70,13 +70,6 @@ export default function Project() {
                   <p>
                     Supabase Edge Functions를 활용하여 분석 결과를 바탕으로 개인화된 문구를 생성합니다.
                     감정 상태, 나이, 성별을 고려하여 사용자에게 맞는 재미있는 문구를 제공합니다.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium mb-2">4. 다국어 지원</h3>
-                  <p>
-                    next-intl을 활용하여 한국어, 영어, 일본어를 지원합니다.
-                    정적 사이트 생성 환경에서도 다국어 지원이 가능하도록 구현했습니다.
                   </p>
                 </div>
               </div>
@@ -117,13 +110,6 @@ export default function Project() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium mb-2">문제: 다국어 지원과 정적 생성</h3>
-                  <p>
-                    <strong>해결:</strong> next-intl의 클라이언트 사이드 기능을 활용하여 정적 사이트에서도
-                    다국어 지원이 가능하도록 구현했습니다.
-                  </p>
-                </div>
-                <div>
                   <h3 className="text-lg font-medium mb-2">문제: 분석 정확도와 사용자 경험</h3>
                   <p>
                     <strong>해결:</strong> 얼굴 감지 실패 시 친근한 메시지와 팁을 제공하고,
@@ -140,7 +126,6 @@ export default function Project() {
                   <h3 className="text-lg font-medium mb-2">기술적 성과</h3>
                   <ul className="list-disc pl-6 space-y-1">
                     <li>정적 사이트에서 AI 모델 효율적 로딩</li>
-                    <li>다국어 지원 정적 사이트 구현</li>
                     <li>클라이언트 사이드 AI 분석 완성</li>
                     <li>반응형 디자인으로 모든 기기 지원</li>
                   </ul>

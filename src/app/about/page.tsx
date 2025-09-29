@@ -42,7 +42,7 @@ export default function About() {
                     <li>Next.js 15 기반 정적 사이트 생성</li>
                     <li>React 19와 TypeScript 활용</li>
                     <li>Tailwind CSS로 반응형 디자인</li>
-                    <li>Supabase Edge Functions로 AI 문구 생성</li>
+                    <li>Supabase Edge Functions + Gemini API로 AI 문구 생성</li>
                   </ul>
                 </div>
               </div>
@@ -56,8 +56,7 @@ export default function About() {
                 모델 캐싱 전략을 구현했습니다.
               </p>
               <p className="mb-4">
-                또한 사용자 경험을 위해 분석 과정을 시각적으로 표현하고, 다국어 지원을 통해
-                더 많은 사용자가 접근할 수 있도록 했습니다.
+                또한 사용자 경험을 위해 분석 과정을 시각적으로 표현하여 지루함을 해소했습니다.
               </p>
             </section>
 
@@ -77,8 +76,7 @@ export default function About() {
             <section>
               <h2 className="text-xl font-semibold mb-4">향후 계획</h2>
               <p className="mb-4">
-                현재 한국어와 영어를 지원하고 있으며, 일본어 지원을 추가했습니다.
-                향후 더 많은 언어를 지원하고, 분석 정확도를 높이기 위한 모델 개선을 계획하고 있습니다.
+                향후 다국어를 지원하고, 분석 정확도를 높이기 위한 모델 개선을 계획하고 있습니다.
               </p>
               <p>
                 또한 사용자 피드백을 바탕으로 새로운 기능과 개선사항을 지속적으로 반영할 예정입니다.

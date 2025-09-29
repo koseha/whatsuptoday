@@ -18,14 +18,14 @@ export default function FAQ() {
               <p className="text-gray-700 leading-relaxed">
                 What&apos;s Up Today는 AI 기술을 활용하여 업로드된 사진의 얼굴 표정을 분석하고 감정을 파악하는 웹 서비스입니다.
                 사진을 업로드하면 7가지 감정(행복, 슬픔, 화남, 두려움, 놀람, 혐오, 중립)을 분석하고,
-                나이와 성별을 예측한 후 AI가 생성한 재미있는 문구와 함께 결과를 제공합니다.
+                나이와 성별을 예측한 후 AI가 생성한 재미있는 문구와 함께 결과를 제공합니다. 또한 이러한 결과를 SNS에 공유할 수 있습니다.
               </p>
             </div>
 
             <div className="border-b border-gray-200 pb-6">
               <h2 className="text-lg font-semibold mb-3 text-blue-600">Q2. 업로드한 사진은 어디에 저장되나요?</h2>
               <p className="text-gray-700 leading-relaxed">
-                업로드된 사진은 서버에 저장되지 않습니다. 모든 분석은 클라이언트 사이드에서 이루어지며,
+                업로드된 사진은 서버에 저장되지 않습니다. 모든 분석은 사용자의 디바이스에서 이루어지며,
                 분석이 완료되면 이미지는 즉시 삭제됩니다. 개인정보 보호를 최우선으로 하는 서비스입니다.
               </p>
             </div>
@@ -82,8 +82,7 @@ export default function FAQ() {
             <div className="border-b border-gray-200 pb-6">
               <h2 className="text-lg font-semibold mb-3 text-blue-600">Q9. 여러 언어를 지원하나요?</h2>
               <p className="text-gray-700 leading-relaxed">
-                현재 한국어, 영어, 일본어를 지원합니다. 언어 선택기는 우측 상단에 위치하며,
-                선택한 언어에 따라 AI가 생성하는 문구도 해당 언어로 제공됩니다.
+                현재 한국어 외 다른 언어를 지원하지 않습니다. 향후 다국어를 지원하기 위한 작업을 진행하고 있습니다.
               </p>
             </div>
 
@@ -99,9 +98,11 @@ export default function FAQ() {
             <div className="border-b border-gray-200 pb-6">
               <h2 className="text-lg font-semibold mb-3 text-blue-600">Q11. 개인정보는 어떻게 처리되나요?</h2>
               <p className="text-gray-700 leading-relaxed">
-                업로드된 사진은 분석 목적으로만 사용되며 서버에 저장되지 않습니다.
-                Google Analytics를 통한 방문 통계 수집과 Google AdSense를 통한 광고 제공 외에는
-                개인정보를 수집하지 않습니다. 자세한 내용은 <a href="/privacy-policy" className="text-blue-600 hover:underline">개인정보 처리방침</a>을 참고해 주세요.
+                업로드된 사진은 사용자의 디바이스에서 분석 후 즉시 삭제되며 절대로 저장되지 않습니다.
+                분석 결과(감정, 나이, 성별)는 서비스 개선을 위해 익명화되어 저장되며,
+                개인을 식별할 수 없는 통계 목적으로만 사용됩니다.
+                Google Analytics를 통한 방문 통계 수집과 Google AdSense를 통한 광고 제공도 이루어집니다.
+                자세한 내용은 <a href="/privacy-policy" className="text-blue-600 hover:underline">개인정보 처리방침</a>을 참고해 주세요.
               </p>
             </div>
 

@@ -27,20 +27,6 @@ export default function Contact() {
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold mb-3">자주 묻는 질문</h2>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">Q: 업로드한 사진은 어디에 저장되나요?</p>
-                  <p className="text-gray-600">A: 업로드된 사진은 분석 후 즉시 삭제되며 저장되지 않습니다.</p>
-                </div>
-                <div>
-                  <p className="font-medium">Q: 분석 결과의 정확도는 어느 정도인가요?</p>
-                  <p className="text-gray-600">A: AI 분석 결과는 참고용이며, 100% 정확성을 보장하지 않습니다.</p>
-                </div>
-              </div>
-            </section>
-
-            <section>
               <p className="text-xs text-gray-500 mt-8">
                 빠른 답변을 위해 문의 시 구체적인 내용을 포함해 주세요.
               </p>
