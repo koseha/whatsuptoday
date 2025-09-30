@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -29,7 +30,16 @@ export default function Footer() {
           연락처
         </Link>
       </div>
-      <p className="text-muted-foreground">© 2025 koseha. All rights reserved.</p>
+      <div className="flex items-center justify-center gap-2 text-muted-foreground">
+        <Image
+          src="/favicon.svg"
+          alt="What's Up Today"
+          width={16}
+          height={16}
+          className="w-4 h-4 opacity-60"
+        />
+        <p>© 2025 koseha. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

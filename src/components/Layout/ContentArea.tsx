@@ -2,6 +2,7 @@ import BasicContainer from "../ui/BasicContainer";
 import { Shield, Sparkles } from "lucide-react";
 import UploadStates from "../features/upload/UploadStates";
 import { useAppTranslations } from "@/hooks/useTranslations";
+import Image from 'next/image';
 
 export default function ContentArea() {
   const t = useAppTranslations();
@@ -10,7 +11,16 @@ export default function ContentArea() {
       <UploadStates />
 
       <BasicContainer>
-        <Sparkles className="w-6 h-6 text-primary mx-auto mb-2" />
+        <div className="relative inline-block mx-auto mb-2">
+          <Image
+            src="/favicon.svg"
+            alt="AI Analysis"
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
+          <Sparkles className="w-3 h-3 text-primary absolute -top-1 -right-1 animate-pulse" />
+        </div>
         <h3 className="font-bold text-sm mb-1">{t.analysis.aiAnalysis()}</h3>
         <p className="text-xs text-muted">{t.analysis.aiDescription()}</p>
       </BasicContainer>

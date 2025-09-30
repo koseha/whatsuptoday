@@ -91,7 +91,10 @@ export default async function FAQ({
             <div className="border-b border-gray-200 pb-6">
               <h2 className="text-lg font-semibold mb-3 text-blue-600">Q9. 여러 언어를 지원하나요?</h2>
               <p className="text-gray-700 leading-relaxed">
-                현재 한국어 외 다른 언어를 지원하지 않습니다. 향후 다국어를 지원하기 위한 작업을 진행하고 있습니다.
+                네! 현재 9개 언어를 지원합니다: 한국어, English, Español, 日本語, 中文, Tiếng Việt, Bahasa Indonesia, Italiano, ไทย.
+                페이지 상단의 언어 선택기를 통해 원하는 언어로 전환할 수 있으며,
+                선택한 언어는 자동으로 저장되어 다음 방문 시에도 유지됩니다.
+                AI가 생성하는 문구도 선택한 언어로 제공됩니다.
               </p>
             </div>
 

@@ -5,6 +5,10 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'WhatUpToday - 오늘의 기분 AI 분석',
   description: 'AI가 당신의 표정을 분석해드립니다',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   other: {
     'google-adsense-account': 'ca-pub-1510173979053173',
   },

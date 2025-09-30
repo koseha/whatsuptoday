@@ -1,5 +1,6 @@
 import { AlertCircle, Camera } from "lucide-react";
 import { useAppTranslations } from "@/hooks/useTranslations";
+import Image from 'next/image';
 
 interface DetectionFailedButtonProps {
   onReset: () => void;
@@ -16,8 +17,19 @@ export default function DetectionFailedButton({
       {/* 감지 실패 안내 */}
       <div className="text-center space-y-3">
         <div className="flex items-center justify-center">
-          <div className="bg-orange-100 p-3 rounded-full">
-            <AlertCircle className="w-6 h-6 text-orange-600" />
+          <div className="relative">
+            <div className="bg-orange-100 p-3 rounded-full">
+              <Image
+                src="/favicon.svg"
+                alt="Oops"
+                width={32}
+                height={32}
+                className="w-8 h-8 opacity-60 grayscale"
+              />
+            </div>
+            <div className="absolute -top-1 -right-1 bg-orange-500 rounded-full p-1">
+              <AlertCircle className="w-4 h-4 text-white" />
+            </div>
           </div>
         </div>
         <div>

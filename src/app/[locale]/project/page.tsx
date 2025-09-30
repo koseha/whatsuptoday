@@ -151,9 +151,31 @@ export default async function Project({
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold mb-4">다국어 지원 구현</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-medium mb-2">국제화(i18n) 아키텍처</h3>
+                  <p>
+                    next-intl 라이브러리를 활용하여 9개 언어를 지원합니다.
+                    한국어, 영어, 스페인어, 일본어, 중국어, 베트남어, 인도네시아어, 이탈리아어, 태국어를 제공하며,
+                    각 언어별로 완전한 번역 파일을 구성했습니다.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium mb-2">사용자 경험</h3>
+                  <p>
+                    선택한 언어는 localStorage에 저장되어 다음 방문 시에도 유지됩니다.
+                    AI가 생성하는 감정 분석 문구도 사용자가 선택한 언어로 제공되어,
+                    전 세계 사용자에게 최적화된 경험을 제공합니다.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold mb-4">향후 개선 계획</h2>
               <p className="mb-4">
-                현재 프로젝트는 기본적인 감정 분석 기능을 제공하고 있으며,
+                현재 프로젝트는 기본적인 감정 분석 기능과 다국어 지원을 제공하고 있으며,
                 향후 더 정확한 분석을 위한 모델 개선과 추가 언어 지원을 계획하고 있습니다.
               </p>
               <p>

@@ -83,9 +83,22 @@ export default async function About({
             </section>
 
             <section>
+              <h2 className="text-xl font-semibold mb-4">다국어 지원</h2>
+              <p className="mb-4">
+                What&apos;s Up Today는 글로벌 사용자를 위해 9개 언어를 지원합니다.
+                한국어, English, Español, 日本語, 中文, Tiếng Việt, Bahasa Indonesia, Italiano, ไทย 중 선택할 수 있으며,
+                선택한 언어는 자동으로 저장되어 다음 방문 시에도 유지됩니다.
+              </p>
+              <p>
+                AI가 생성하는 감정 분석 문구도 사용자가 선택한 언어로 제공되어,
+                전 세계 어디서나 편하게 서비스를 이용할 수 있습니다.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-xl font-semibold mb-4">향후 계획</h2>
               <p className="mb-4">
-                향후 다국어를 지원하고, 분석 정확도를 높이기 위한 모델 개선을 계획하고 있습니다.
+                분석 정확도를 높이기 위한 모델 개선과 더 많은 언어 지원을 계획하고 있습니다.
               </p>
               <p>
                 또한 사용자 피드백을 바탕으로 새로운 기능과 개선사항을 지속적으로 반영할 예정입니다.
