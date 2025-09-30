@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'Project Details - What\'s Up Today',
-  description: 'What\'s Up Today 프로젝트의 기술적 세부사항과 개발 과정',
+  title: "Project Details - What's Up Today",
+  description: "What's Up Today 프로젝트의 기술적 세부사항과 개발 과정",
 };
 
 export default async function Project({

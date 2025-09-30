@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: '연락처 - What\'s Up Today',
-  description: 'What\'s Up Today 연락처 정보',
+  title: "연락처 - What's Up Today",
+  description: "What's Up Today 연락처 정보",
 };
 
 export default async function Contact({

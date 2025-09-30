@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: '이용 약관 - What\'s Up Today',
-  description: 'What\'s Up Today 이용 약관',
+  title: "이용 약관 - What's Up Today",
+  description: "What's Up Today 이용 약관",
 };
 
 export default async function TermsOfService({

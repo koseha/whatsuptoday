@@ -3,8 +3,8 @@ import { Link } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: '개인정보 처리방침 - What\'s Up Today',
-  description: 'What\'s Up Today 개인정보 처리방침',
+  title: "개인정보 처리방침 - What's Up Today",
+  description: "What's Up Today 개인정보 처리방침",
 };
 
 export default async function PrivacyPolicy({

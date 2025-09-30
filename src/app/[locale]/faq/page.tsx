@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'FAQ - What\'s Up Today',
-  description: 'What\'s Up Today 서비스에 대한 자주 묻는 질문과 답변',
+  title: "FAQ - What's Up Today",
+  description: "What's Up Today 서비스에 대한 자주 묻는 질문과 답변",
 };
 
 export default async function FAQ({

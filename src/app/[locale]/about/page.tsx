@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
-  title: 'About - What\'s Up Today',
-  description: 'AI 감정 분석 서비스 What\'s Up Today에 대해 알아보세요',
+  title: "About - What's Up Today",
+  description: "AI 감정 분석 서비스 What's Up Today에 대해 알아보세요",
 };
 
 export default async function About({

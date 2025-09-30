@@ -3,7 +3,7 @@ import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WhatUpToday - 오늘의 기분 AI 분석',
+  title: "What's Up Today - 오늘의 기분 AI 분석",
   description: 'AI가 당신의 표정을 분석해드립니다',
   icons: {
     icon: '/favicon.svg',
