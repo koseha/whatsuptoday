@@ -1,6 +1,5 @@
 import { Search, FileText, PenTool } from "lucide-react";
 import { useAppTranslations } from "@/hooks/useTranslations";
-import Image from 'next/image';
 
 interface AILoadingAnimationProps {
   phase: 'search' | 'writing';
@@ -13,16 +12,6 @@ export default function AILoadingAnimation({ phase }: AILoadingAnimationProps) {
       {/* AI 로딩 애니메이션 */}
       <div className="flex flex-col items-center space-y-4">
         <div className="relative w-24 h-24 flex items-center justify-center">
-          {/* 중앙 파비콘 */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Image
-              src="/favicon.svg"
-              alt="AI"
-              width={40}
-              height={40}
-              className="w-10 h-10 opacity-20 animate-pulse"
-            />
-          </div>
           {/* 검색 단계 (0-3초) */}
           {phase === 'search' && (
             <div className="animate-fade-in-out">
