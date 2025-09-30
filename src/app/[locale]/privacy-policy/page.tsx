@@ -1,11 +1,18 @@
 import type { Metadata } from 'next';
+import { Link } from '@/i18n/routing';
 
 export const metadata: Metadata = {
   title: '개인정보 처리방침 - What\'s Up Today',
   description: 'What\'s Up Today 개인정보 처리방침',
 };
 
-export default function PrivacyPolicy() {
+export default async function PrivacyPolicy({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await params;
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-4xl w-full px-4 py-8">
@@ -45,7 +52,7 @@ export default function PrivacyPolicy() {
 
             <section>
               <h2 className="text-lg font-semibold mb-3">5. 연락처</h2>
-              <p>개인정보 관련 문의사항이 있으시면 <a href="/contact" className="text-blue-600 hover:underline">연락처</a>를 통해 문의해 주세요.</p>
+              <p>개인정보 관련 문의사항이 있으시면 <Link href="/contact" className="text-blue-600 hover:underline">연락처</Link>를 통해 문의해 주세요.</p>
             </section>
 
             <section>

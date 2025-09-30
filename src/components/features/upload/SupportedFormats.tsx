@@ -1,21 +1,23 @@
+"use client";
+
 import { Camera, HardDrive } from "lucide-react";
 import BasicContainer from "@/components/ui/BasicContainer";
-import { useAppTranslations } from "@/hooks/useTranslations";
+import { useTranslations } from 'next-intl';
 
 export default function SupportedFormats() {
-  const t = useAppTranslations();
+  const t = useTranslations();
 
   return (
     <BasicContainer>
-      <h4 className="font-bold text-sm mb-3 text-center">{t.upload.supportedFormats()}</h4>
+      <h4 className="font-bold text-sm mb-3 text-center">{t('upload.supportedFormats')}</h4>
       <div className="flex justify-center space-x-6 text-xs">
         <div className="flex items-center text-muted">
           <Camera className="w-4 h-4 mr-1" />
-          {t.upload.imageFormats()}
+          JPG, PNG, WebP
         </div>
         <div className="flex items-center text-muted">
           <HardDrive className="w-4 h-4 mr-1" />
-          {t.upload.maxFileSize()}
+          최대 10MB
         </div>
       </div>
     </BasicContainer>

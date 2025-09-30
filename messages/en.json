@@ -1,0 +1,81 @@
+{
+  "Metadata": {
+    "title": "What's Up Today - AI Emotion Analysis"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "header": {
+    "description": "Today's mood",
+    "aiText": "AI",
+    "descriptionEnd": "will analyze it in a fun way"
+  },
+  "upload": {
+    "title": "Select a photo",
+    "description": "Drag or click to upload",
+    "selectFile": "Select File",
+    "supportedFormats": "Supported Formats",
+    "imageFormats": "JPG, PNG, WEBP",
+    "videoFormats": "MP4, WebM",
+    "privacyNotice": "Your photo will not be saved!",
+    "fileSizeError": "Please select a file smaller than 10MB.",
+    "changePhoto": "Change to another photo",
+    "maxFileSize": "Max 10MB"
+  },
+  "analysis": {
+    "analyzing": "Getting your photo...",
+    "analyze": "Analyze Mood",
+    "analyzeTitle": "Today's Mood",
+    "aiAnalysis": "AI Mood Analysis",
+    "aiDescription": "Fun interpretation of your expression and vibe",
+    "successAnalysis": "Analysis completed!",
+    "errorAnalysis": "An error occurred during analysis.",
+    "mainEmotion": "Dominant Emotion",
+    "emotions": {
+      "happy": "😊 Happy",
+      "sad": "😢 Sad",
+      "angry": "😠 Angry",
+      "fearful": "😨 Fearful",
+      "surprised": "😲 Surprised",
+      "disgusted": "🤢 Disgusted",
+      "neutral": "😐 Calm"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "ageSuffix": " years old"
+  },
+  "detection": {
+    "failed": "Can't find your face 😅",
+    "failedDescription": "Try again with a clearer and brighter photo!",
+    "tips": {
+      "title": "💡 Tips:",
+      "lighting": "• Try taking a photo in well-lit conditions",
+      "center": "• Make sure your face is centered",
+      "expression": "• Photos with clear expressions work best"
+    }
+  },
+  "ai": {
+    "generating": "AI is generating a phrase...",
+    "phases": {
+      "analyzing": "Analyzing your expression",
+      "thinking": "Thinking of a good phrase",
+      "creating": "Creating a fun phrase",
+      "finalizing": "Polishing it up"
+    }
+  },
+  "result": {
+    "regenerate": "Regenerate",
+    "share": "Share",
+    "download": "Download",
+    "hashtag": "AIEmotionAnalysis",
+    "generating": "Generating...",
+    "reset": "Start Over"
+  }
+}

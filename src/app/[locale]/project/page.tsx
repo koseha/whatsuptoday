@@ -5,7 +5,13 @@ export const metadata: Metadata = {
   description: 'What\'s Up Today 프로젝트의 기술적 세부사항과 개발 과정',
 };
 
-export default function Project() {
+export default async function Project({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await params;
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-4xl w-full px-4 py-8">

@@ -1,9 +1,5 @@
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -19,9 +15,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const messages = await getMessages();
   return (
-    <html lang="ko">
+    <html>
       <head>
         {/* Google Tag Manager */}
         <Script
@@ -51,19 +46,7 @@ export default async function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="max-w-125 w-full px-2 flex flex-col gap-7">
-            <Header />
-
-            <main className="w-full animate-fade-in-up">
-              <NextIntlClientProvider messages={messages}>
-                {children}
-              </NextIntlClientProvider>
-            </main>
-
-            <Footer />
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   );

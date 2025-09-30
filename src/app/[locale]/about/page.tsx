@@ -1,3 +1,4 @@
+import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -5,7 +6,14 @@ export const metadata: Metadata = {
   description: 'AI 감정 분석 서비스 What\'s Up Today에 대해 알아보세요',
 };
 
-export default function About() {
+export default async function About({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  // params를 await로 언래핑 (사용하지 않더라도 필요)
+  await params;
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-4xl w-full px-4 py-8">
@@ -86,7 +94,7 @@ export default function About() {
             <section>
               <h2 className="text-xl font-semibold mb-4">연락처</h2>
               <p>
-                서비스에 대한 문의나 피드백이 있으시면 <a href="/contact" className="text-blue-600 hover:underline">연락처 페이지</a>를 통해
+                서비스에 대한 문의나 피드백이 있으시면 <Link href="/contact" className="text-blue-600 hover:underline">연락처 페이지</Link>를 통해
                 언제든 연락해 주세요. 사용자의 의견은 서비스 개선에 큰 도움이 됩니다.
               </p>
             </section>

@@ -1,10 +1,12 @@
+"use client";
+
 import { Camera } from "lucide-react";
 import Link from "next/link";
 import AnimatedTitle from "../ui/AnimatedTitle";
-import { useAppTranslations } from "@/hooks/useTranslations";
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
-  const t = useAppTranslations();
+  const t = useTranslations();
 
   return (
     <header className="pt-10">
@@ -18,7 +20,7 @@ export default function Header() {
         </div>
         <AnimatedTitle />
         <p className="text-muted font-normal text-sm leading-relaxed">
-          {t.header.description()} <span className="text-primary font-medium">{t.header.aiText()}</span>{t.header.descriptionEnd()}
+          {t('header.description')} <span className="text-primary font-medium">{t('header.aiText')}</span>{t('header.descriptionEnd')}
         </p>
       </div>
     </header>

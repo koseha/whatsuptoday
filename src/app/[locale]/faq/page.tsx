@@ -1,3 +1,4 @@
+import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -5,7 +6,13 @@ export const metadata: Metadata = {
   description: 'What\'s Up Today 서비스에 대한 자주 묻는 질문과 답변',
 };
 
-export default function FAQ() {
+export default async function FAQ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await params;
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-4xl w-full px-4 py-8">
@@ -102,7 +109,7 @@ export default function FAQ() {
                 분석 결과(감정, 나이, 성별)는 서비스 개선을 위해 익명화되어 저장되며,
                 개인을 식별할 수 없는 통계 목적으로만 사용됩니다.
                 Google Analytics를 통한 방문 통계 수집과 Google AdSense를 통한 광고 제공도 이루어집니다.
-                자세한 내용은 <a href="/privacy-policy" className="text-blue-600 hover:underline">개인정보 처리방침</a>을 참고해 주세요.
+                자세한 내용은 <Link href="/privacy-policy" className="text-blue-600 hover:underline">개인정보 처리방침</Link>을 참고해 주세요.
               </p>
             </div>
 
@@ -117,7 +124,7 @@ export default function FAQ() {
             <div>
               <h2 className="text-lg font-semibold mb-3 text-blue-600">Q13. 추가 문의사항이 있으면 어떻게 하나요?</h2>
               <p className="text-gray-700 leading-relaxed">
-                서비스 이용 중 궁금한 점이나 문의사항이 있으시면 <a href="/contact" className="text-blue-600 hover:underline">연락처 페이지</a>를 통해
+                서비스 이용 중 궁금한 점이나 문의사항이 있으시면 <Link href="/contact" className="text-blue-600 hover:underline">연락처 페이지</Link>를 통해
                 언제든 연락해 주세요. 사용자의 피드백은 서비스 개선에 큰 도움이 됩니다.
               </p>
             </div>

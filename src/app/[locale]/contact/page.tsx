@@ -5,7 +5,13 @@ export const metadata: Metadata = {
   description: 'What\'s Up Today 연락처 정보',
 };
 
-export default function Contact() {
+export default async function Contact({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  await params;
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-2xl w-full px-4 py-8">
