@@ -1,0 +1,81 @@
+{
+  "Metadata": {
+    "title": "What's Up Today - Analisis Emosi AI"
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "retry": "Coba lagi",
+    "close": "Tutup",
+    "cancel": "Batal",
+    "confirm": "Konfirmasi"
+  },
+  "header": {
+    "description": "Suasana hati hari ini",
+    "aiText": "AI",
+    "descriptionEnd": "akan menganalisis dengan cara yang menyenangkan"
+  },
+  "upload": {
+    "title": "Pilih foto",
+    "description": "Seret atau klik untuk mengunggah",
+    "selectFile": "Pilih file",
+    "supportedFormats": "Format yang didukung",
+    "imageFormats": "JPG, PNG, WEBP",
+    "videoFormats": "MP4, WebM",
+    "privacyNotice": "Foto Anda tidak akan disimpan!",
+    "fileSizeError": "Silakan pilih file yang lebih kecil dari 10MB.",
+    "changePhoto": "Ganti ke foto lain",
+    "maxFileSize": "Maks 10MB"
+  },
+  "analysis": {
+    "analyzing": "Mengambil foto Anda...",
+    "analyze": "Analisis suasana hati",
+    "analyzeTitle": "Suasana hati hari ini",
+    "aiAnalysis": "Analisis suasana hati AI",
+    "aiDescription": "Interpretasi menyenangkan dari ekspresi dan suasana Anda",
+    "successAnalysis": "Analisis selesai!",
+    "errorAnalysis": "Terjadi kesalahan selama analisis.",
+    "mainEmotion": "Emosi dominan",
+    "emotions": {
+      "happy": "😊 Senang",
+      "sad": "😢 Sedih",
+      "angry": "😠 Marah",
+      "fearful": "😨 Takut",
+      "surprised": "😲 Terkejut",
+      "disgusted": "🤢 Jijik",
+      "neutral": "😐 Tenang"
+    },
+    "gender": {
+      "male": "Laki-laki",
+      "female": "Perempuan"
+    },
+    "ageSuffix": " tahun"
+  },
+  "detection": {
+    "failed": "Tidak dapat menemukan wajah Anda 😅",
+    "failedDescription": "Coba lagi dengan foto yang lebih jelas dan terang!",
+    "tips": {
+      "title": "💡 Tips:",
+      "lighting": "• Coba ambil foto di tempat dengan pencahayaan yang baik",
+      "center": "• Pastikan wajah Anda berada di tengah",
+      "expression": "• Foto dengan ekspresi yang jelas memberikan hasil terbaik"
+    }
+  },
+  "ai": {
+    "generating": "AI sedang membuat frasa...",
+    "phases": {
+      "analyzing": "Menganalisis ekspresi Anda",
+      "thinking": "Memikirkan frasa yang bagus",
+      "creating": "Membuat frasa yang menyenangkan",
+      "finalizing": "Menyempurnakan"
+    }
+  },
+  "result": {
+    "regenerate": "Buat ulang",
+    "share": "Bagikan",
+    "download": "Unduh",
+    "hashtag": "AnalisisEmosiAI",
+    "generating": "Membuat...",
+    "reset": "Mulai ulang"
+  }
+}

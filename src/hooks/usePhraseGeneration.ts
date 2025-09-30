@@ -53,7 +53,7 @@ export const usePhraseGeneration = (analysisResult: FaceAnalysisResult | null) =
         setGeneratingPhase('writing');
       }, 3000);
 
-      // 실제 generatePhrase 함수 호출
+      // 실제 generatePhrase 함수 호출 (localStorage에 저장된 언어 사용)
       const result = await generatePhrase(analysisResult, selectedLanguage);
 
       // API 응답에서 문구 추출 (Edge Function이 { text: "문구" } 형태로 응답)

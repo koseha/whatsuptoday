@@ -4,6 +4,7 @@ import { useCallback, useState, useEffect } from "react";
 import { UploadBefore, ImageUpload, SupportedFormats } from "./";
 import { useAppTranslations } from "@/hooks/useTranslations";
 import { useFaceApiModels } from "@/hooks/useFaceApiModels";
+import LanguageSelector from "@/components/ui/LanguageSelector";
 
 type UploadState = 'before' | 'image';
 
@@ -53,9 +54,9 @@ export default function UploadStates() {
     <>
       {/* 업로드 전 상태 */}
       {uploadState === 'before' && <>
-        {/* <div className="mt-4">
+        <div className="mb-6 flex justify-center">
           <LanguageSelector />
-        </div> */}
+        </div>
         <UploadBefore onFileSelect={handleFileSelect} />
         <SupportedFormats />
       </>

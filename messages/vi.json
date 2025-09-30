@@ -1,0 +1,81 @@
+{
+  "Metadata": {
+    "title": "What's Up Today - Phân tích cảm xúc AI"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "retry": "Thử lại",
+    "close": "Đóng",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận"
+  },
+  "header": {
+    "description": "Tâm trạng hôm nay",
+    "aiText": "AI",
+    "descriptionEnd": "sẽ phân tích một cách thú vị"
+  },
+  "upload": {
+    "title": "Chọn ảnh",
+    "description": "Kéo hoặc nhấp để tải lên",
+    "selectFile": "Chọn tệp",
+    "supportedFormats": "Định dạng hỗ trợ",
+    "imageFormats": "JPG, PNG, WEBP",
+    "videoFormats": "MP4, WebM",
+    "privacyNotice": "Ảnh của bạn sẽ không được lưu!",
+    "fileSizeError": "Vui lòng chọn tệp nhỏ hơn 10MB.",
+    "changePhoto": "Đổi sang ảnh khác",
+    "maxFileSize": "Tối đa 10MB"
+  },
+  "analysis": {
+    "analyzing": "Đang lấy ảnh của bạn...",
+    "analyze": "Phân tích tâm trạng",
+    "analyzeTitle": "Tâm trạng hôm nay",
+    "aiAnalysis": "Phân tích tâm trạng AI",
+    "aiDescription": "Diễn giải thú vị về biểu cảm và cảm xúc của bạn",
+    "successAnalysis": "Phân tích hoàn tất!",
+    "errorAnalysis": "Đã xảy ra lỗi trong quá trình phân tích.",
+    "mainEmotion": "Cảm xúc chủ đạo",
+    "emotions": {
+      "happy": "😊 Vui vẻ",
+      "sad": "😢 Buồn bã",
+      "angry": "😠 Tức giận",
+      "fearful": "😨 Sợ hãi",
+      "surprised": "😲 Ngạc nhiên",
+      "disgusted": "🤢 Ghê tởm",
+      "neutral": "😐 Bình tĩnh"
+    },
+    "gender": {
+      "male": "Nam",
+      "female": "Nữ"
+    },
+    "ageSuffix": " tuổi"
+  },
+  "detection": {
+    "failed": "Không tìm thấy khuôn mặt của bạn 😅",
+    "failedDescription": "Hãy thử lại với ảnh rõ hơn và sáng hơn!",
+    "tips": {
+      "title": "💡 Mẹo:",
+      "lighting": "• Thử chụp ảnh ở nơi có ánh sáng tốt",
+      "center": "• Đảm bảo khuôn mặt của bạn ở giữa",
+      "expression": "• Ảnh có biểu cảm rõ ràng sẽ cho kết quả tốt nhất"
+    }
+  },
+  "ai": {
+    "generating": "AI đang tạo cụm từ...",
+    "phases": {
+      "analyzing": "Đang phân tích biểu cảm của bạn",
+      "thinking": "Đang nghĩ ra cụm từ hay",
+      "creating": "Đang tạo cụm từ thú vị",
+      "finalizing": "Đang hoàn thiện"
+    }
+  },
+  "result": {
+    "regenerate": "Tạo lại",
+    "share": "Chia sẻ",
+    "download": "Tải xuống",
+    "hashtag": "PhânTíchCảmXúcAI",
+    "generating": "Đang tạo...",
+    "reset": "Bắt đầu lại"
+  }
+}

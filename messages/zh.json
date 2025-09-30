@@ -1,0 +1,81 @@
+{
+  "Metadata": {
+    "title": "What's Up Today - AI情绪分析"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "close": "关闭",
+    "cancel": "取消",
+    "confirm": "确认"
+  },
+  "header": {
+    "description": "今天的心情",
+    "aiText": "AI",
+    "descriptionEnd": "会有趣地分析"
+  },
+  "upload": {
+    "title": "选择照片",
+    "description": "拖动或点击上传",
+    "selectFile": "选择文件",
+    "supportedFormats": "支持格式",
+    "imageFormats": "JPG、PNG、WEBP",
+    "videoFormats": "MP4、WebM",
+    "privacyNotice": "您的照片不会被保存！",
+    "fileSizeError": "请选择小于10MB的文件。",
+    "changePhoto": "更换照片",
+    "maxFileSize": "最大10MB"
+  },
+  "analysis": {
+    "analyzing": "正在获取照片...",
+    "analyze": "分析心情",
+    "analyzeTitle": "今天的心情",
+    "aiAnalysis": "AI心情分析",
+    "aiDescription": "有趣解读你的表情和氛围",
+    "successAnalysis": "分析完成！",
+    "errorAnalysis": "分析过程中发生错误。",
+    "mainEmotion": "主要情绪",
+    "emotions": {
+      "happy": "😊 开心",
+      "sad": "😢 悲伤",
+      "angry": "😠 生气",
+      "fearful": "😨 恐惧",
+      "surprised": "😲 惊讶",
+      "disgusted": "🤢 厌恶",
+      "neutral": "😐 平静"
+    },
+    "gender": {
+      "male": "男性",
+      "female": "女性"
+    },
+    "ageSuffix": "岁"
+  },
+  "detection": {
+    "failed": "找不到您的脸 😅",
+    "failedDescription": "请用更清晰明亮的照片再试一次！",
+    "tips": {
+      "title": "💡 提示：",
+      "lighting": "• 尝试在光线充足的地方拍照",
+      "center": "• 确保脸部居中",
+      "expression": "• 表情清晰的照片效果最好"
+    }
+  },
+  "ai": {
+    "generating": "AI正在生成短语...",
+    "phases": {
+      "analyzing": "正在分析你的表情",
+      "thinking": "正在思考好的短语",
+      "creating": "正在创作有趣的短语",
+      "finalizing": "正在润色"
+    }
+  },
+  "result": {
+    "regenerate": "重新生成",
+    "share": "分享",
+    "download": "下载",
+    "hashtag": "AI情绪分析",
+    "generating": "生成中...",
+    "reset": "重新开始"
+  }
+}

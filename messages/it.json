@@ -1,0 +1,81 @@
+{
+  "Metadata": {
+    "title": "What's Up Today - Analisi delle Emozioni AI"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "retry": "Riprova",
+    "close": "Chiudi",
+    "cancel": "Annulla",
+    "confirm": "Conferma"
+  },
+  "header": {
+    "description": "Il tuo umore di oggi",
+    "aiText": "AI",
+    "descriptionEnd": "lo analizzerà in modo divertente"
+  },
+  "upload": {
+    "title": "Seleziona una foto",
+    "description": "Trascina o clicca per caricare",
+    "selectFile": "Seleziona file",
+    "supportedFormats": "Formati supportati",
+    "imageFormats": "JPG, PNG, WEBP",
+    "videoFormats": "MP4, WebM",
+    "privacyNotice": "La tua foto non verrà salvata!",
+    "fileSizeError": "Seleziona un file inferiore a 10MB.",
+    "changePhoto": "Cambia con un'altra foto",
+    "maxFileSize": "Max 10MB"
+  },
+  "analysis": {
+    "analyzing": "Recupero della tua foto...",
+    "analyze": "Analizza l'umore",
+    "analyzeTitle": "Umore di oggi",
+    "aiAnalysis": "Analisi dell'umore AI",
+    "aiDescription": "Interpretazione divertente della tua espressione e atmosfera",
+    "successAnalysis": "Analisi completata!",
+    "errorAnalysis": "Si è verificato un errore durante l'analisi.",
+    "mainEmotion": "Emozione dominante",
+    "emotions": {
+      "happy": "😊 Felice",
+      "sad": "😢 Triste",
+      "angry": "😠 Arrabbiato",
+      "fearful": "😨 Spaventato",
+      "surprised": "😲 Sorpreso",
+      "disgusted": "🤢 Disgustato",
+      "neutral": "😐 Calmo"
+    },
+    "gender": {
+      "male": "Maschile",
+      "female": "Femminile"
+    },
+    "ageSuffix": " anni"
+  },
+  "detection": {
+    "failed": "Non riesco a trovare il tuo viso 😅",
+    "failedDescription": "Riprova con una foto più chiara e luminosa!",
+    "tips": {
+      "title": "💡 Suggerimenti:",
+      "lighting": "• Prova a scattare una foto in condizioni di buona illuminazione",
+      "center": "• Assicurati che il tuo viso sia centrato",
+      "expression": "• Le foto con espressioni chiare funzionano meglio"
+    }
+  },
+  "ai": {
+    "generating": "L'AI sta generando una frase...",
+    "phases": {
+      "analyzing": "Analisi della tua espressione",
+      "thinking": "Pensando a una buona frase",
+      "creating": "Creazione di una frase divertente",
+      "finalizing": "Rifinendo i dettagli"
+    }
+  },
+  "result": {
+    "regenerate": "Rigenera",
+    "share": "Condividi",
+    "download": "Scarica",
+    "hashtag": "AnalisiEmozioniAI",
+    "generating": "Generazione...",
+    "reset": "Ricomincia"
+  }
+}
