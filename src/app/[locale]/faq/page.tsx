@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'FAQ - What\'s Up Today',
@@ -11,7 +12,8 @@ export default async function FAQ({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  await params;
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

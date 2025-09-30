@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Project Details - What\'s Up Today',
@@ -10,7 +11,8 @@ export default async function Project({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  await params;
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

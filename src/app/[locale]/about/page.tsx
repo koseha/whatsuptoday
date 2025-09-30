@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'About - What\'s Up Today',
@@ -11,8 +12,8 @@ export default async function About({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  // params를 await로 언래핑 (사용하지 않더라도 필요)
-  await params;
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

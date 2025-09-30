@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Link } from '@/i18n/routing';
+import { setRequestLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: '개인정보 처리방침 - What\'s Up Today',
@@ -11,7 +12,8 @@ export default async function PrivacyPolicy({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  await params;
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
