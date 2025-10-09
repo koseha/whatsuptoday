@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import AdSense from '@/components/shared/AdSense';
 
 export const dynamic = 'force-static';
 
@@ -46,6 +47,13 @@ export default async function LocaleLayout({ children, params }: Props) {
           <main className="w-full animate-fade-in-up">
             {children}
           </main>
+
+          {/* 광고: 모든 페이지 하단 공통 광고 */}
+          <AdSense
+            adSlot="6826368695"
+            adFormat="auto"
+            fullWidthResponsive={true}
+          />
 
           <Footer />
         </div>

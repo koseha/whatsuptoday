@@ -22,6 +22,14 @@ export default async function RootLayout({
   return (
     <html>
       <head>
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1510173979053173"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"
