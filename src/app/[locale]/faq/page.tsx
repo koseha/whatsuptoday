@@ -16,8 +16,8 @@ export default async function FAQ({
   setRequestLocale(locale);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-4xl w-full px-4 py-8">
+    <div className="min-h-screen">
+      <div className="w-full px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-3xl font-bold mb-8 text-center">자주 묻는 질문</h1>
 
@@ -126,8 +126,105 @@ export default async function FAQ({
               </p>
             </div>
 
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q13. 분석에 사용되는 모델 파일의 크기는 얼마나 되나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                각 모델 파일은 약 1-2MB 크기로, 총 4개 모델이 사용됩니다. 첫 방문 시 한 번만 다운로드되며,
+                이후에는 브라우저 캐시에서 로드되어 빠른 분석이 가능합니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q14. 분석 정확도는 어느 정도인가요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                Face-API.js의 공식 문서에 따르면, 일반적인 조건에서 약 80-90%의 정확도를 보입니다.
+                하지만 개인의 특성이나 특수한 상황에서는 정확도가 달라질 수 있습니다.
+                분석 결과는 참고용으로만 사용하시기 바랍니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q15. 왜 TensorFlow.js WebGL 백엔드를 사용하나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                GPU 가속을 통해 분석 속도를 향상시키고, CPU 부하를 줄이기 위함입니다.
+                WebGL을 지원하지 않는 브라우저에서는 CPU 백엔드로 자동 전환됩니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q16. 모델 로딩이 실패하면 어떻게 되나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                개발 환경에서는 더미 데이터를 사용하여 테스트할 수 있도록 구현되어 있습니다.
+                실제 서비스에서는 모델 로딩 실패 시 사용자에게 오류 메시지를 표시하고 다시 시도할 수 있습니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q17. 분석 결과를 어떻게 해석하나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                각 감정별로 0-1 사이의 점수가 표시되며, 가장 높은 점수의 감정이 주요 감정으로 표시됩니다.
+                나이와 성별은 얼굴 특징을 기반으로 한 예측값이며, 100% 정확성을 보장하지 않습니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q18. 여러 사람이 있는 사진도 분석 가능한가요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                현재는 첫 번째로 감지된 얼굴만 분석합니다. 여러 사람이 있는 사진의 경우
+                가장 앞쪽에 있는 사람의 얼굴이 분석 대상이 됩니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q19. 동영상 파일도 분석할 수 있나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                현재는 정적 이미지 파일만 지원합니다. 동영상 파일은 지원하지 않으며,
+                동영상에서 프레임을 추출하여 이미지로 변환한 후 업로드해 주세요.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q20. 분석 결과를 저장할 수 있나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                분석 결과는 브라우저에 저장되지 않습니다. 결과를 보관하고 싶으시면
+                공유 기능을 사용하여 이미지로 저장하거나 스크린샷을 찍어 보관하실 수 있습니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q21. 업로드한 사진이 어디에 저장되나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                업로드된 사진은 서버에 저장되지 않습니다. 브라우저의 메모리에서만 처리되며,
+                분석 완료 후 즉시 삭제됩니다. 개인정보 보호를 최우선으로 하는 서비스입니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q22. 분석 데이터는 어떻게 처리되나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                분석 결과(감정, 나이, 성별)는 서비스 개선을 위해 익명화되어 저장될 수 있습니다.
+                하지만 개인을 식별할 수 없는 통계 목적으로만 사용되며, 개인정보는 포함되지 않습니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q23. 쿠키나 추적 기술을 사용하나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                Google Analytics를 통한 방문 통계 수집과 Google AdSense를 통한 광고 제공을 위해
+                쿠키를 사용할 수 있습니다. 언어 설정은 localStorage에 저장됩니다.
+              </p>
+            </div>
+
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q24. 오프라인에서도 사용할 수 있나요?</h2>
+              <p className="text-gray-700 leading-relaxed">
+                모델 파일이 브라우저 캐시에 저장되어 있다면 오프라인에서도 얼굴 감지와 감정 분석이 가능합니다.
+                하지만 AI 문구 생성은 인터넷 연결이 필요합니다.
+              </p>
+            </div>
+
             <div>
-              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q13. 추가 문의사항이 있으면 어떻게 하나요?</h2>
+              <h2 className="text-lg font-semibold mb-3 text-blue-600">Q25. 추가 문의사항이 있으면 어떻게 하나요?</h2>
               <p className="text-gray-700 leading-relaxed">
                 서비스 이용 중 궁금한 점이나 문의사항이 있으시면 <Link href="/contact" className="text-blue-600 hover:underline">연락처 페이지</Link>를 통해
                 언제든 연락해 주세요. 사용자의 피드백은 서비스 개선에 큰 도움이 됩니다.

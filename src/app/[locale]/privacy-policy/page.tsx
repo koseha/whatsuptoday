@@ -16,8 +16,8 @@ export default async function PrivacyPolicy({
   setRequestLocale(locale);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-4xl w-full px-4 py-8">
+    <div className="min-h-screen">
+      <div className="w-full px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-2xl font-bold mb-6">개인정보 처리방침</h1>
 

@@ -15,8 +15,8 @@ export default async function Contact({
   setRequestLocale(locale);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-2xl w-full px-4 py-8">
+    <div className="min-h-screen">
+      <div className="w-full px-4 py-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h1 className="text-2xl font-bold mb-6">연락처</h1>
 
@@ -29,7 +29,7 @@ export default async function Contact({
             <section>
               <h2 className="text-lg font-semibold mb-3">연락 방법</h2>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="mb-2"><strong>이메일:</strong> kosehadev@google.com</p>
+                <p className="mb-2"><strong>이메일:</strong> kosehadev@gmail.com</p>
                 <p className="text-xs text-gray-600">평일 09:00 - 18:00 (KST) 내 응답 가능</p>
               </div>
             </section>

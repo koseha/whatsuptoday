@@ -9,8 +9,8 @@ export default function Footer() {
           소개
         </Link>
         <span className="text-muted-foreground">|</span>
-        <Link href="/project" className="text-muted-foreground hover:text-foreground transition-colors">
-          프로젝트
+        <Link href="/tech-guide" className="text-muted-foreground hover:text-foreground transition-colors">
+          기술 가이드
         </Link>
         <span className="text-muted-foreground">|</span>
         <Link href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">
